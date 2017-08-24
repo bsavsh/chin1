@@ -1,7 +1,9 @@
 package com.savsh.config;
 
+import org.springframework.context.MessageSource;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.support.ResourceBundleMessageSource;
 import org.springframework.web.servlet.ViewResolver;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
 import org.springframework.web.servlet.view.JstlView;
@@ -10,14 +12,6 @@ import org.springframework.web.servlet.view.tiles3.TilesViewResolver;
 
 @Configuration
 public class BeanConfig {
-//    @Bean
-//    public ViewResolver getViewResolver(){
-//        InternalResourceViewResolver resolver = new InternalResourceViewResolver();
-//        resolver.setPrefix("/WEB-INF/views/");
-//        resolver.setSuffix(".jsp");
-//        resolver.setViewClass(JstlView.class);
-//        return resolver;
-//    }
 
     @Bean
     public TilesConfigurer tilesConfigurer() {
@@ -32,5 +26,13 @@ public class BeanConfig {
     @Bean
     public ViewResolver viewResolver() {
         return new TilesViewResolver();
+    }
+
+    @Bean
+    public MessageSource messageSource() {
+        ResourceBundleMessageSource messageSource =
+                new ResourceBundleMessageSource();
+        messageSource.setBasename("messages");
+        return messageSource;
     }
 }
