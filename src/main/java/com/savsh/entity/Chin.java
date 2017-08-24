@@ -21,12 +21,12 @@ public class Chin {
     @Size(min = 2, max = 20, message = "color must be between 2 and 20 characters long.")
     private String color;
 
-    @Digits(integer = 100, fraction = 0)
+    @Digits(integer = 100, fraction = 0, message = "father id must be an integer number")
     @Min(1)
     private Long fatherId;
 
 
-    @Digits(integer = 100, fraction = 0)
+    @Digits(integer = 100, fraction = 0, message = "mother id must be an integer number")
     @Min(1)
     private Long motherId;
 

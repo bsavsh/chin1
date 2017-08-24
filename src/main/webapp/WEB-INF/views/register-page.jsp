@@ -48,14 +48,14 @@
                     <label class="control-label col-md-4" for="fatherId">Father Id:</label>
                     <div class="col-md-8">
                         <sf:input path="fatherId" class="form-control" placeholder="Enter father's id"/>
-                        <sf:errors path="color"/><br/>
+                        <sf:errors path="fatherId"/><br/>
                     </div>
                 </div>
                 <div class="form-group">
                     <label class="control-label col-md-4" for="motherId">Mother Id:</label>
                     <div class="col-md-8">
                         <sf:input path="motherId" class="form-control" placeholder="Enter mother's id"/>
-                        <sf:errors path="color"/><br/>
+                        <sf:errors path="motherId"/><br/>
                     </div>
                 </div>
 
