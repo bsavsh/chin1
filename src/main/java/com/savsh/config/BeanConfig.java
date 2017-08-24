@@ -30,9 +30,8 @@ public class BeanConfig {
 
     @Bean
     public MessageSource messageSource() {
-        ResourceBundleMessageSource messageSource =
-                new ResourceBundleMessageSource();
-        messageSource.setBasename("messages");
+        ResourceBundleMessageSource messageSource = new ResourceBundleMessageSource();
+        messageSource.setBasename("properties/messages");
         return messageSource;
     }
 }
