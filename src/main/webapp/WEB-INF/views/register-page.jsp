@@ -26,21 +26,21 @@
                     <sf:input path="color" class="form-control" placeholder="Enter color"/>
                     <sf:errors path="color"/><br/>
                 </div>
-            </div>
-            <div class="form-group">
+
+             <div class="form-group">
                 <label class="control-label col-md-4" for="fatherId">Father Id:</label>
-                <div class="col-md-8">
+                 <div class="col-md-8">
                     <sf:input path="fatherId" class="form-control" placeholder="Enter father's id"/>
-                    <sf:errors path="color"/><br/>
+                    <sf:errors path="fatherId"/><br/>
                 </div>
-            </div>
-            <div class="form-group">
+             </div>
+             <div class="form-group">
                 <label class="control-label col-md-4" for="motherId">Mother Id:</label>
                 <div class="col-md-8">
                     <sf:input path="motherId" class="form-control" placeholder="Enter mother's id"/>
-                    <sf:errors path="color"/><br/>
+                    <sf:errors path="motherId"/><br/>
                 </div>
-            </div>
+             </div>
 
             <div class="form-group">
                 <div class="col-md-offset-2 col-md-10">
@@ -49,6 +49,7 @@
             </div>
         </sf:form>
     </div>
+      
     <div class="col-md-8">
     </div>
 </div>
