@@ -1,16 +1,11 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
-<!DOCTYPE>
-<html>
-<head>
-    <script src="jquery-3.2.1.min.js"></script>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script src="jquery-3.2.1.min.js"></script>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
-    <title>Chins</title>
-</head>
+<title>Chins</title>
 
-<body>
 <div class="container">
     <h2>Welcome dear Ola</h2>
     <p>This tool will help you to manage your business:</p>
@@ -42,7 +37,5 @@
 </div>
 
 
-
 <script src="chins-p.js"></script>
-</body>
-</html>
+
