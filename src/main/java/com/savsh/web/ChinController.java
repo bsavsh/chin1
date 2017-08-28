@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 
 @RestController
@@ -33,8 +34,9 @@ public class ChinController {
     }
 
     @RequestMapping(method = RequestMethod.PUT)
-    public void updateChin(@RequestBody Chin chin) {
-        chinService.updateChin(chin );
+    public Chin updateChin(@Valid @RequestBody Chin chin) {
+        System.out.println(chin);
+        return chinService.updateChin(chin );
     }
 
     @RequestMapping(method = RequestMethod.POST)
