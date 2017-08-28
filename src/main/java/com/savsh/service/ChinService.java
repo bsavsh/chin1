@@ -23,8 +23,8 @@ public class ChinService {
         chinRepository.delete(id);
     }
 
-    public void updateChin(Chin chin) {
-        chinRepository.save(chin);
+    public Chin updateChin(Chin chin) {
+        return chinRepository.save(chin);
     }
 
     public void insertChin(Chin chin) {

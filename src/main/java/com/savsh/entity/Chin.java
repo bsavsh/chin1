@@ -69,4 +69,39 @@ public class Chin {
     public void setMotherId(Long motherId) {
         this.motherId = motherId;
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Chin chin = (Chin) o;
+
+        if (!id.equals(chin.id)) return false;
+        if (sex != null ? !sex.equals(chin.sex) : chin.sex != null) return false;
+        if (color != null ? !color.equals(chin.color) : chin.color != null) return false;
+        if (fatherId != null ? !fatherId.equals(chin.fatherId) : chin.fatherId != null) return false;
+        return motherId != null ? motherId.equals(chin.motherId) : chin.motherId == null;
+    }
+
+    @Override
+    public int hashCode() {
+        int result = id.hashCode();
+        result = 31 * result + (sex != null ? sex.hashCode() : 0);
+        result = 31 * result + (color != null ? color.hashCode() : 0);
+        result = 31 * result + (fatherId != null ? fatherId.hashCode() : 0);
+        result = 31 * result + (motherId != null ? motherId.hashCode() : 0);
+        return result;
+    }
+
+    @Override
+    public String toString() {
+        return "Chin{" +
+                "id=" + id +
+                ", sex='" + sex + '\'' +
+                ", color='" + color + '\'' +
+                ", fatherId=" + fatherId +
+                ", motherId=" + motherId +
+                '}';
+    }
 }
