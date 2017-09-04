@@ -1,4 +1,6 @@
 $(document).ready(function(){
+
+    // to fill all rows by chin
     let url = "http://localhost:8080/chins";
     $.ajax({
         url: url,
@@ -14,19 +16,26 @@ $(document).ready(function(){
                         "<td>" + chin.color + "</td>" +
                         "<td>" + chin.fatherId + "</td>" +
                         "<td>" + chin.motherId + "</td>" +
-                        "<td><button type='button' class='btn btn-default chin-edit' data-toggle='modal' data-target='#myModal'>Edit</button></td>"
+                        "<td><button type='button' class='btn btn-default chin-edit'" +
+                            " data-toggle='modal' data-target='#editChinModalBlanckId'>Edit</button></td>"
                     "</tr>";
 
                 $("#chinTableId tbody").append(newRowContent);
             })
 
+            // to pass chin id into function that will fill edit-modal
             $('.chin-edit').click(function() {
                 let chinId = $(this).parents('tr').find('td').eq(0).text();
                 // alert(managerId);
+                $("errorEdit")
                 getChinById(chinId);
             });
         }
     });
+
+    $(".modalCloseEditChinButton").click(function () {
+        $("#errorMessagesId").hide();
+    })
 
     $('#modalSaveEditChinButtonId').click(function() {
         let dataSender = {
@@ -37,12 +46,6 @@ $(document).ready(function(){
             motherId: $('#chin-motherId').val()
         };
 
-        console.log(dataSender.id);
-        console.log(dataSender.sex);
-        console.log(dataSender.color);
-        console.log(dataSender.fatherId);
-        console.log(dataSender.motherId);
-
         $.ajax({
             type: 'PUT',
             contentType: 'application/json',
@@ -50,7 +53,18 @@ $(document).ready(function(){
             dataType: "json",
             data: JSON.stringify(dataSender),
             success: function(data){
-                window.location.replace("http://localhost:8080/chin?id=" + data.id);
+                if (data.id !== undefined) {
+                    window.location.replace("http://localhost:8080/chin?id=" + data.id);
+                } else {
+                    let str = "";
+                    for (let i = 0; i < data.length; i++) {
+                        str += data[i].message + "</br>";
+                        $("#errorsId").html(str);
+                    }
+                    $("#errorMessagesId").show();
+
+                }
+
             },
             error: function(){
                 alert('updateChin error: ');
@@ -59,6 +73,7 @@ $(document).ready(function(){
     });
 });
 
+// to fill modal edit form
 function getChinById(id) {
     let rootURL = "http://localhost:8080/chins/";
     $.ajax({

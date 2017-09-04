@@ -11,23 +11,22 @@ import java.sql.Timestamp;
 public class Chin {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+    @Min(value = 1, message = "error.number.id.min")
     private Long id;
 
     @NotNull
-    @Size(min = 4, max = 6, message="sex must be between 4 and 6 characters long.")
+    @Size(min = 4, max = 6, message="error.sex.size")
     private String sex;
 
     @NotNull
-    @Size(min = 2, max = 20, message = "color must be between 2 and 20 characters long.")
+    @Size(min = 2, max = 20, message = "error.color.size")
     private String color;
 
-    @Digits(integer = 100, fraction = 0, message = "father id must be an integer number")
-    @Min(1)
+    @Min(value = 1, message = "error.notnumber")
     private Long fatherId;
 
 
-    @Digits(integer = 100, fraction = 0, message = "mother id must be an integer number")
-    @Min(1)
+    @Min(value = 1, message = "error.notnumber")
     private Long motherId;
 
     public Long getId() {

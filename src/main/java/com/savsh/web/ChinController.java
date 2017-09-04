@@ -6,6 +6,7 @@ import com.savsh.repository.ChinRepository;
 import com.savsh.service.ChinService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
@@ -35,12 +36,11 @@ public class ChinController {
 
     @RequestMapping(method = RequestMethod.PUT)
     public Chin updateChin(@Valid @RequestBody Chin chin) {
-        System.out.println(chin);
         return chinService.updateChin(chin );
     }
 
     @RequestMapping(method = RequestMethod.POST)
-    public void insertChin(@RequestBody Chin chin) {
+    public void insertChin(@Valid @RequestBody Chin chin) {
         chinService.insertChin(chin);
     }
 }
