@@ -20,13 +20,13 @@
 
 
 <%-- Modal --%>
-<div class="modal fade" id="myModal" role="dialog">
+<div class="modal fade" id="editChinModalBlanckId" role="dialog">
     <div class="modal-dialog">
 
         <!-- Modal content-->
         <div class="modal-content">
             <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <button type="button" class="close modalCloseEditChinButton" data-dismiss="modal">&times;</button>
                 <h4 class="modal-title">Edit Chin</h4>
             </div>
             <div class="modal-body">
@@ -66,12 +66,16 @@
                             <div class="col-md-6"><input type="number" id="chin-motherId"></input></div>
                         </div>
                     </li>
+
+                    <li class="list-group-item" style="display: none;" id="errorMessagesId">
+                        <p id="errorsId"></p>
+                    </li>
                 </ul>
 
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-default" id="modalSaveEditChinButtonId" data-dismiss="modal">Save</button>
-                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-default" id="modalSaveEditChinButtonId">Save</button>
+                <button type="button" class="btn btn-default modalCloseEditChinButton" data-dismiss="modal">Close</button>
             </div>
         </div>
 

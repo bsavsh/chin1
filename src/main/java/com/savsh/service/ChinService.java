@@ -27,7 +27,7 @@ public class ChinService {
         return chinRepository.save(chin);
     }
 
-    public void insertChin(Chin chin) {
-        chinRepository.save(chin);
+    public Chin insertChin(Chin chin) {
+        return chinRepository.save(chin);
     }
 }

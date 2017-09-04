@@ -1,55 +1,60 @@
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@ taglib uri="http://www.springframework.org/tags/form" prefix="sf" %>
-
-<br/>
 <br/>
 <%-- to fill form of chinnchilla  --%>
 <div class="row">
     <div class="col-md-4">
+
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
                 <h3>Register</h3> <br/>
             </div>
         </div>
-        <sf:form method="POST" commandName="chin" class="form-horizontal">
+
+        <form class="form-horizontal">
             <div class="form-group">
-                <label class="control-label col-md-4" for="sex">Sex:</label>
+                <label class="control-label col-md-4">Sex:</label>
                 <div class="col-md-8">
-                    <sf:input path="sex" class="form-control" placeholder="Enter sex"/>
-                    <sf:errors path="sex"/><br/>
+                    <input type="text" class="form-control" id="chin-sex" placeholder="Enter sex"/>
                 </div>
             </div>
             <div class="form-group">
-                <label class="control-label col-md-4" for="color">Color:</label>
+                <label class="control-label col-md-4">Color:</label>
                 <div class="col-md-8">
-                    <sf:input path="color" class="form-control" placeholder="Enter color"/>
-                    <sf:errors path="color"/><br/>
+                    <input type="text" class="form-control" id="chin-color" placeholder="Enter color"/>
                 </div>
             </div>
             <div class="form-group">
-                <label class="control-label col-md-4" for="fatherId">Father Id:</label>
+                <label class="control-label col-md-4">Father Id:</label>
                 <div class="col-md-8">
-                    <sf:input path="fatherId" class="form-control" placeholder="Enter father's id"/>
-                    <sf:errors path="fatherId"/><br/>
+                    <input type="number" class="form-control" id="chin-fatherId" placeholder="Enter father's id"/>
                 </div>
             </div>
             <div class="form-group">
-                <label class="control-label col-md-4" for="motherId">Mother Id:</label>
+                <label class="control-label col-md-4">Mother Id:</label>
                 <div class="col-md-8">
-                    <sf:input path="motherId" class="form-control" placeholder="Enter mother's id"/>
-                    <sf:errors path="motherId"/><br/>
+                    <input type="number" class="form-control" id="chin-motherId" placeholder="Enter mother's id"/>
                 </div>
+            </div>
+
+            <div class="list-group-item" style="display: none;" id="errorMessagesId">
+                <p id="errorsId"></p>
             </div>
 
             <div class="form-group">
                 <div class="col-md-offset-2 col-md-10">
-                    <input type="submit" class="btn btn-default" value="Register"/>
+                    <button type="button" class="btn btn-default pull-right" id="register-button-id">Register</button>
                 </div>
             </div>
-        </sf:form>
+        </form>
+
     </div>
-    <div class="col-md-8">
+    <div class="col-md-4">
+
+    </div>
+    <div class="col-md-4">
+
     </div>
 </div>
+
+<script src="register-file.js"></script>
 
