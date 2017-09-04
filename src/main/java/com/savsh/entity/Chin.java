@@ -11,7 +11,6 @@ import java.sql.Timestamp;
 public class Chin {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Min(value = 1, message = "error.number.id.min")
     private Long id;
 
     @NotNull

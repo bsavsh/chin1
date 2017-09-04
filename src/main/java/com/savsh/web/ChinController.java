@@ -40,7 +40,7 @@ public class ChinController {
     }
 
     @RequestMapping(method = RequestMethod.POST)
-    public void insertChin(@Valid @RequestBody Chin chin) {
-        chinService.insertChin(chin);
+    public Chin insertChin(@Valid @RequestBody Chin chin) {
+        return chinService.insertChin(chin);
     }
 }

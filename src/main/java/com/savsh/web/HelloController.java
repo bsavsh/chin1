@@ -37,20 +37,12 @@ public class HelloController {
     }
 
     @RequestMapping(value = "/chin/register", method = RequestMethod.GET)
-    public String registerChin(Model model) {
-        model.addAttribute(new Chin());
+    public String registerChin() {
         return "register-page";
     }
 
-    @RequestMapping(value = "/chin/register", method = RequestMethod.POST)
-    public String registerChin(@Valid Chin chin, Errors errors) {
-
-        if (errors.hasErrors()) {
-            return "register-page";
-        }
-        service.insertChin(chin);
-        return "redirect:/chin?id=" + chin.getId();
+    @RequestMapping(value = "/test", method = RequestMethod.GET)
+    public String test() {
+        return "test-page";
     }
-
-
 }
