@@ -1,4 +1,5 @@
 $(document).ready(function() {
+
     let url = "http://localhost:8080/chins";
 
     $('#register-button-id').click(function() {
@@ -20,19 +21,18 @@ $(document).ready(function() {
                 if (data.id !== undefined) {
                     window.location.replace("http://localhost:8080/chin?id=" + data.id);
                 } else {
-
+                    let str = "";
+                    for (let i = 0; i < data.length; i++) {
+                        str += data[i].message + "</br>";
+                        $("#errorsId").html(str);
+                    }
+                    $("#errorMessagesId").show();
                 }
 
             },
-            error: function(data){
+            error: function(){
                 alert('updateChin error: ');
-                console.log(data);
-                let str = "";
-                for (let i = 0; i < data.length; i++) {
-                    str += data[i].message + "</br>";
-                    $("#errorsId").html(str);
-                }
-                $("#errorMessagesId").show();
+
             }
         });
     });

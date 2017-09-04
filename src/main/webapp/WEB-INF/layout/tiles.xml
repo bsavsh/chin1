@@ -13,10 +13,6 @@
         <put-attribute name="body" value="/WEB-INF/views/home-page.jsp" />
     </definition>
 
-    <definition name="register-page" extends="base">
-        <put-attribute name="body" value="/WEB-INF/views/register-page.jsp" />
-    </definition>
-
     <definition name="chins-page" extends="base">
         <put-attribute name="body" value="/WEB-INF/views/chins-page.jsp" />
     </definition>
@@ -25,8 +21,8 @@
         <put-attribute name="body" value="/WEB-INF/views/personal-chin-page.jsp" />
     </definition>
 
-    <definition name="test-page" extends="base">
-        <put-attribute name="body" value="/WEB-INF/views/test.jsp" />
+    <definition name="register-page" extends="base">
+        <put-attribute name="body" value="/WEB-INF/views/register-page.jsp" />
     </definition>
 
 </tiles-definitions>

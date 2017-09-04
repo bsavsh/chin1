@@ -36,13 +36,8 @@ public class HelloController {
         return "personal-chin-page";
     }
 
-    @RequestMapping(value = "/chin/register", method = RequestMethod.GET)
+    @RequestMapping(value = "/register", method = RequestMethod.GET)
     public String registerChin() {
         return "register-page";
-    }
-
-    @RequestMapping(value = "/test", method = RequestMethod.GET)
-    public String test() {
-        return "test-page";
     }
 }
