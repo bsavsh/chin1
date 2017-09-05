@@ -8,6 +8,6 @@
     <li><a href="#">Statistics</a></li>
     <li><a href="#">Notification</a></li>
     <li><a href="/register">Register</a></li>
-    <li><a href="/?language=en_US">English</a></li>
-    <li><a href="/?language=fr">Ukrainian</a></li>
+    <li class="pull-right"><a href="/?language=en_US">English</a></li>
+    <li class="pull-right"><a href="/?language=fr">Ukrainian</a></li>
 </ul>
