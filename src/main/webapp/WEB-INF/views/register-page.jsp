@@ -35,6 +35,19 @@
                     <input type="number" class="form-control" id="chin-motherId" placeholder="Enter mother's id"/>
                 </div>
             </div>
+            <div class="form-group">
+                <label class="control-label col-md-4">Birthday:</label>
+                <div class="col-md-8">
+                    <input type="date" class="form-control" id="chin-born" placeholder="Enter birthday"/>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="control-label col-md-4">Name:</label>
+                <div class="col-md-8">
+                    <input type="text" class="form-control" id="chin-name" placeholder="Enter name"/>
+                </div>
+            </div>
 
             <div class="list-group-item" style="display: none;" id="errorMessagesId">
                 <p id="errorsId"></p>

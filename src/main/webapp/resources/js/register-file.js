@@ -8,8 +8,12 @@ $(document).ready(function() {
             sex: $('#chin-sex').val(),
             color: $('#chin-color').val(),
             fatherId: $('#chin-fatherId').val(),
-            motherId: $('#chin-motherId').val()
+            motherId: $('#chin-motherId').val(),
+            born: $('#chin-born').val(),
+            name: $('#chin-name').val()
         };
+
+        console.log(dataSender);
 
         $.ajax({
             type: 'POST',

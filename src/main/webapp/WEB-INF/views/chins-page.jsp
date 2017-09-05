@@ -67,6 +67,27 @@
                         </div>
                     </li>
 
+                    <li class="list-group-item">
+                        <div class="row">
+                            <div class="col-md-6">Born:</div>
+                            <div class="col-md-6"><input type="date" id="chin-born"></input></div>
+                        </div>
+                    </li>
+
+                    <li class="list-group-item">
+                        <div class="row">
+                            <div class="col-md-6">Deceased:</div>
+                            <div class="col-md-6"><input type="text" id="chin-deceased"></input></div>
+                        </div>
+                    </li>
+
+                    <li class="list-group-item">
+                        <div class="row">
+                            <div class="col-md-6">Name:</div>
+                            <div class="col-md-6"><input type="text" id="chin-name"></input></div>
+                        </div>
+                    </li>
+
                     <li class="list-group-item" style="display: none;" id="errorMessagesId">
                         <p id="errorsId"></p>
                     </li>

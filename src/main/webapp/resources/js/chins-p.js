@@ -43,7 +43,10 @@ $(document).ready(function(){
             sex: $('#chin-sex').val(),
             color: $('#chin-color').val(),
             fatherId: $('#chin-fatherId').val(),
-            motherId: $('#chin-motherId').val()
+            motherId: $('#chin-motherId').val(),
+            born: $('#chin-born').val(),
+            deceased: $('#chin-deceased').val(),
+            name: $('#chin-name').val
         };
 
         $.ajax({
@@ -86,6 +89,9 @@ function getChinById(id) {
             $('#chin-color').val(data.color);
             $('#chin-fatherId').val(data.fatherId);
             $('#chin-motherId').val(data.motherId);
+            $('#chin-born').val(data.born);
+            $('#chin-deceased').val(data.deceased);
+            $('#chin-name').val(data.name);
         }
     });
 }
