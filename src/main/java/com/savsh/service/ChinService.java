@@ -35,46 +35,74 @@ public class ChinService {
     }
 
     public Iterable<Chin> getParrentsOfChinById(long id) {
-        List list = new ArrayList<>();
+        List<Chin> list = new ArrayList<>();
         Chin chin = getChinById(id);
         long fatherId = chin.getFatherId();
         long motherId = chin.getMotherId();
 
-        list.add(getChinById(fatherId));
-        list.add(getChinById(motherId));
+        if (fatherId != 0) {
+            list.add(getChinById(fatherId));
+        }
+
+        if (motherId != 0) {
+            list.add(getChinById(motherId));
+        }
 
         return list;
     }
 
     public Iterable<Chin> getGrandParrentsOfChinById(long id) {
-        List list = new ArrayList<>();
-        long fatherId = getChinById(id).getFatherId();
-        long motherId = getChinById(id).getMotherId();
-
-        long granpa1 = getChinById(fatherId).getFatherId();
-        long granma1 = getChinById(fatherId).getMotherId();
-
-        long granpa2 = getChinById(motherId).getFatherId();
-        long granma2 = getChinById(motherId).getMotherId();
-
-        list.add(getChinById(granpa1));
-        list.add(getChinById(granma1));
-        list.add(getChinById(granpa2));
-        list.add(getChinById(granma2));
+        Iterable<Chin> parrents = getParrentsOfChinById(id);
+        List<Chin> list = new ArrayList<>();
+        for (Chin parrent : parrents) {
+            saveParrentsOfParrentsInNGeneration(parrent.getId(), list);
+        }
 
         return list;
     }
 
     public Iterable<Chin> getGreatGrandParrentsOfChinById(long id) {
-        Iterable<Chin> grandparrents = getGrandParrentsOfChinById(id);
-        List list = new ArrayList<>();
-        for (Chin grandp : grandparrents) {
-            Iterable<Chin> parrentsOfGrandparrents = getParrentsOfChinById(grandp.getId());
-            for (Chin chin : parrentsOfGrandparrents) {
-                list.add(chin);
-            }
+        Iterable<Chin> grandParrents = getGrandParrentsOfChinById(id);
+        List<Chin> list = new ArrayList<>();
+        for (Chin grandParrent : grandParrents) {
+            saveParrentsOfParrentsInNGeneration(grandParrent.getId(), list);
         }
 
         return list;
     }
+
+    public Iterable<Chin> getGreatGreatGrandParrentsOfChinById(long id) {
+        Iterable<Chin> greatGrandParrents = getGreatGrandParrentsOfChinById(id);
+        List<Chin> list = new ArrayList<>();
+        for (Chin greatGrandParrent : greatGrandParrents) {
+            saveParrentsOfParrentsInNGeneration(greatGrandParrent.getId(), list);
+        }
+
+        return list;
+    }
+
+    public Iterable<Chin> getAllAncestorsUpTo10Generations(long id) {
+        List<Chin> list = new ArrayList<>();
+        m(id, list);
+
+
+        return list;
+    }
+
+    private Iterable<Chin> m(long id, List list) {
+        Iterable<Chin> greatGreatGrandParrents = getGreatGreatGrandParrentsOfChinById(id);
+        for (Chin chin : greatGreatGrandParrents) {
+            saveParrentsOfParrentsInNGeneration(chin.getId(), list);
+        }
+
+        return list;
+    }
+
+    private void saveParrentsOfParrentsInNGeneration(long id, List list) {
+        Iterable<Chin> parrents = getParrentsOfChinById(id);
+        for (Chin chin : parrents) {
+            list.add(chin);
+        }
+    }
+
 }

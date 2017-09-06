@@ -79,8 +79,8 @@
                 <button id="parrents-id" class="btn btn-default">Parents</button>
                 <button id="grand-parrents-id" class="btn btn-default">GrandParents</button>
                 <button id="great-grand-parrents-id", class="btn btn-default">Great GrandParents</button>
-                <button class="btn btn-default">Great Great GrandParents</button>
-                <button class="btn btn-default">All ancestors up to 10 generations</button>
+                <button id="great-great-grand-parrents-id", class="btn btn-default">Great Great GrandParents</button>
+                <button id="all-ancestors-up-to-10-id", class="btn btn-default">All ancestors up to 10 generations</button>
             </div>
 
             <div id="others-buttons-id" style="display: none;">

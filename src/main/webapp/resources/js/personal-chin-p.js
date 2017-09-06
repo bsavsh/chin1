@@ -26,6 +26,8 @@ $(document).ready(function () {
     listenerToAncestorsByNamingThem("#parrents-id", "parrents", id);
     listenerToAncestorsByNamingThem("#grand-parrents-id", "grand-parrents", id);
     listenerToAncestorsByNamingThem("#great-grand-parrents-id", "great-grand-parrents", id);
+    listenerToAncestorsByNamingThem("#great-great-grand-parrents-id", "great-great-grand-parrrents", id);
+    listenerToAncestorsByNamingThem("#all-ancestors-up-to-10-id", "all-ancestors-up-to-10-generations", id);
 
 });
 

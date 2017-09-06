@@ -31,4 +31,14 @@ public class BloodRelationsController {
     public Iterable<Chin> getGreatGrandParrentsOfChinById(@PathVariable long id) {
         return chinService.getGreatGrandParrentsOfChinById(id);
     }
+
+    @RequestMapping(value = "/great-great-grand-parrrents/{id}", method = RequestMethod.GET)
+    public Iterable<Chin> getGreatGreatGrandParrentsOfChinById(@PathVariable long id) {
+        return chinService.getGreatGreatGrandParrentsOfChinById(id);
+    }
+
+    @RequestMapping(value = "/all-ancestors-up-to-10-generations/{id}", method = RequestMethod.GET)
+    public Iterable<Chin> getAllAncestorsUpTo10Generations(@PathVariable long id) {
+        return chinService.getAllAncestorsUpTo10Generations(id);
+    }
 }
