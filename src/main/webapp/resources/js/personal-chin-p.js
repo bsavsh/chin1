@@ -11,7 +11,9 @@ $(document).ready(function () {
             $('#chin-color').append(data.color);
             $('#chin-fatherId').append(data.fatherId);
             $('#chin-motherId').append(data.motherId);
-
+            $('#chin-born').append(data.born);
+            $('#chin-deceased').append(data.deceased);
+            $('#chin-name').append(data.name);
         }
     });
 });

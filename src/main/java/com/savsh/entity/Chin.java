@@ -1,11 +1,13 @@
 package com.savsh.entity;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.validation.constraints.*;
-import java.sql.Timestamp;
+import java.time.LocalDate;
 
 @Entity
 public class Chin {
@@ -24,9 +26,39 @@ public class Chin {
     @Min(value = 1, message = "error.notnumber")
     private Long fatherId;
 
-
     @Min(value = 1, message = "error.notnumber")
     private Long motherId;
+
+    @JsonFormat(pattern = "yyyy-MM-dd")
+    private LocalDate born;
+
+    private String deceased;
+
+    private String name;
+
+    public String getDeceased() {
+        return deceased;
+    }
+
+    public void setDeceased(String deceased) {
+        this.deceased = deceased;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public LocalDate getBorn() {
+        return born;
+    }
+
+    public void setBorn(LocalDate born) {
+        this.born = born;
+    }
 
     public Long getId() {
         return id;
@@ -75,9 +107,12 @@ public class Chin {
 
         Chin chin = (Chin) o;
 
-        if (!id.equals(chin.id)) return false;
+        if (id != null ? !id.equals(chin.id) : chin.id != null) return false;
         if (sex != null ? !sex.equals(chin.sex) : chin.sex != null) return false;
         if (color != null ? !color.equals(chin.color) : chin.color != null) return false;
+        if (name != null ? !name.equals(chin.name) : chin.name != null) return false;
+        if (born != null ? !born.equals(chin.born) : chin.born != null) return false;
+        if (deceased != null ? !deceased.equals(chin.born) : chin.deceased != null) return false;
         if (fatherId != null ? !fatherId.equals(chin.fatherId) : chin.fatherId != null) return false;
         return motherId != null ? motherId.equals(chin.motherId) : chin.motherId == null;
     }
@@ -87,6 +122,9 @@ public class Chin {
         int result = id != null ? id.hashCode() : 0;
         result = 31 * result + (sex != null ? sex.hashCode() : 0);
         result = 31 * result + (color != null ? color.hashCode() : 0);
+        result = 31 * result + (name != null ? name.hashCode() : 0);
+        result = 31 * result + (born != null ? born.hashCode() : 0);
+        result = 31 * result + (deceased != null ? deceased.hashCode() : 0);
         result = 31 * result + (fatherId != null ? fatherId.hashCode() : 0);
         result = 31 * result + (motherId != null ? motherId.hashCode() : 0);
         return result;
@@ -98,6 +136,9 @@ public class Chin {
                 "id=" + id +
                 ", sex='" + sex + '\'' +
                 ", color='" + color + '\'' +
+                ", name='" + name + '\'' +
+                ", born=" + born +
+                ", deceased=" + deceased +
                 ", fatherId=" + fatherId +
                 ", motherId=" + motherId +
                 '}';

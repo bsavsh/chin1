@@ -1,8 +1,11 @@
 package com.savsh.config;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import org.springframework.context.MessageSource;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Primary;
 import org.springframework.context.support.ReloadableResourceBundleMessageSource;
 import org.springframework.context.support.ResourceBundleMessageSource;
 import org.springframework.web.servlet.LocaleResolver;
@@ -13,7 +16,11 @@ import org.springframework.web.servlet.view.JstlView;
 import org.springframework.web.servlet.view.tiles3.TilesConfigurer;
 import org.springframework.web.servlet.view.tiles3.TilesViewResolver;
 
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.Locale;
+
+import static java.time.format.DateTimeFormatter.ofPattern;
 
 @Configuration
 public class BeanConfig {
@@ -48,5 +55,17 @@ public class BeanConfig {
         resolver.setCookieName("myLocaleCookie");
         resolver.setCookieMaxAge(4800);
         return resolver;
+    }
+
+    public static final DateTimeFormatter FORMATTER = ofPattern("yyyy-MM-dd");
+    @Bean
+    @Primary
+    public ObjectMapper serializingObjectMapper() {
+        ObjectMapper objectMapper = new ObjectMapper();
+        JavaTimeModule javaTimeModule = new JavaTimeModule();
+        javaTimeModule.addSerializer(LocalDate.class, new LocalDateSerializer());
+        javaTimeModule.addDeserializer(LocalDate.class, new LocalDateDeserializer());
+        objectMapper.registerModule(javaTimeModule);
+        return objectMapper;
     }
 }

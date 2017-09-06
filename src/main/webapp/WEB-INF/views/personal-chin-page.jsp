@@ -41,6 +41,27 @@
                     <div class="col-md-6"><span id="chin-motherId"></span></div>
                 </div>
             </li>
+
+            <li class="list-group-item">
+                <div class="row">
+                    <div class="col-md-6">Born:</div>
+                    <div class="col-md-6"><span id="chin-born"></span></div>
+                </div>
+            </li>
+
+            <li class="list-group-item">
+                <div class="row">
+                    <div class="col-md-6">Deceased:</div>
+                    <div class="col-md-6"><span id="chin-deceased"></span></div>
+                </div>
+            </li>
+
+            <li class="list-group-item">
+                <div class="row">
+                    <div class="col-md-6">Name:</div>
+                    <div class="col-md-6"><span id="chin-name"></span></div>
+                </div>
+            </li>
         </ul>
 
     </div>
