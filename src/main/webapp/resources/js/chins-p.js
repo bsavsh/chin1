@@ -1,7 +1,14 @@
 $(document).ready(function(){
 
-    // to fill all rows by chin
-    let url = "http://localhost:8080/chins";
+    getAllChins();
+    saveEditedChin();
+
+});
+
+let url = "http://localhost:8080/chins";
+
+// to get all chins in table
+function getAllChins() {
     $.ajax({
         url: url,
         type: 'GET',
@@ -11,14 +18,14 @@ $(document).ready(function(){
                 let url = "http://localhost:8080/chin?id=" + chin.id;
                 let newRowContent =
                     "<tr>" +
-                        "<td> <a href= " + url + ">" + chin.id + "</a></td>" +
-                        "<td>" + chin.sex + "</td>" +
-                        "<td>" + chin.color + "</td>" +
-                        "<td>" + chin.fatherId + "</td>" +
-                        "<td>" + chin.motherId + "</td>" +
-                        "<td><button type='button' class='btn btn-default chin-edit'" +
-                            " data-toggle='modal' data-target='#editChinModalBlanckId'>Edit</button></td>"
-                    "</tr>";
+                    "<td> <a href= " + url + ">" + chin.id + "</a></td>" +
+                    "<td>" + chin.sex + "</td>" +
+                    "<td>" + chin.color + "</td>" +
+                    "<td>" + chin.fatherId + "</td>" +
+                    "<td>" + chin.motherId + "</td>" +
+                    "<td><button type='button' class='btn btn-default chin-edit'" +
+                    " data-toggle='modal' data-target='#editChinModalBlanckId'>Edit</button></td>"
+                "</tr>";
 
                 $("#chinTableId tbody").append(newRowContent);
             })
@@ -32,11 +39,10 @@ $(document).ready(function(){
             });
         }
     });
+}
 
-    $(".modalCloseEditChinButton").click(function () {
-        $("#errorMessagesId").hide();
-    })
-
+// action to save button in edit window
+function saveEditedChin() {
     $('#modalSaveEditChinButtonId').click(function() {
         let dataSender = {
             id: $('#chin-id').text(),
@@ -57,7 +63,9 @@ $(document).ready(function(){
             data: JSON.stringify(dataSender),
             success: function(data){
                 if (data.id !== undefined) {
-                    window.location.replace("http://localhost:8080/chin?id=" + data.id);
+                    // window.location.replace("http://localhost:8080/chin?id=" + data.id);
+                    $('#chinTableId tbody > tr').remove();
+                    getAllChins();
                 } else {
                     let str = "";
                     for (let i = 0; i < data.length; i++) {
@@ -74,7 +82,12 @@ $(document).ready(function(){
             }
         });
     });
-});
+
+
+    $(".modalCloseEditChinButton").click(function () {
+        $("#errorMessagesId").hide();
+    })
+}
 
 // to fill modal edit form
 function getChinById(id) {

@@ -95,8 +95,10 @@
 
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-default" id="modalSaveEditChinButtonId">Save</button>
-                <button type="button" class="btn btn-default modalCloseEditChinButton" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-default"
+                        data-dismiss="modal" id="modalSaveEditChinButtonId">Save</button>
+                <button type="button" class="btn btn-default modalCloseEditChinButton"
+                        data-dismiss="modal">Close</button>
             </div>
         </div>
 
