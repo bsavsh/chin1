@@ -34,6 +34,8 @@ public class ChinService {
         return chinRepository.save(chin);
     }
 
+//    for ancestors buttons
+
     public Iterable<Chin> getParrentsOfChinById(long id) {
         List<Chin> list = new ArrayList<>();
         Chin chin = getChinById(id);
@@ -48,49 +50,54 @@ public class ChinService {
             list.add(getChinById(motherId));
         }
 
+        list.removeIf(chin1 -> chin1 == null);
         return list;
     }
 
     public Iterable<Chin> getGrandParrentsOfChinById(long id) {
         Iterable<Chin> parrents = getParrentsOfChinById(id);
         List<Chin> list = new ArrayList<>();
-        for (Chin parrent : parrents) {
-            saveParrentsOfParrentsInNGeneration(parrent.getId(), list);
-        }
-
+        parrents.forEach(
+                chin -> {if (chin != null) {saveParrentsOfParrentsInNGeneration(chin.getId(), list);}}
+        );
+        list.removeIf(chin -> chin == null);
         return list;
     }
 
     public Iterable<Chin> getGreatGrandParrentsOfChinById(long id) {
         Iterable<Chin> grandParrents = getGrandParrentsOfChinById(id);
         List<Chin> list = new ArrayList<>();
-        for (Chin grandParrent : grandParrents) {
-            saveParrentsOfParrentsInNGeneration(grandParrent.getId(), list);
-        }
-
+        grandParrents.forEach(chin -> {
+            if (chin != null) {saveParrentsOfParrentsInNGeneration(chin.getId(), list);}
+        });
+        list.removeIf(chin -> chin == null);
         return list;
     }
 
     public Iterable<Chin> getGreatGreatGrandParrentsOfChinById(long id) {
         Iterable<Chin> greatGrandParrents = getGreatGrandParrentsOfChinById(id);
         List<Chin> list = new ArrayList<>();
-        for (Chin greatGrandParrent : greatGrandParrents) {
-            saveParrentsOfParrentsInNGeneration(greatGrandParrent.getId(), list);
-        }
-
+        greatGrandParrents.forEach(
+                chin -> {
+                    if (chin != null) {saveParrentsOfParrentsInNGeneration(chin.getId(), list);}
+                });
+        list.removeIf(chin -> chin == null);
         return list;
     }
 
     public Iterable<Chin> getAllAncestorsUpTo10Generations(long id) {
         List<Chin> list = new ArrayList<>();
-        m(id, list);
-
-
+        list.addAll(getGreatGreatGreatGrandParrentsOfChinById(id));
+        list.addAll(getGreatGreatGreatGreatGrandParrentsOfChinById(id));
+        list.addAll(getGreatGreatGreatGreatGreatGrandParrentsOfChinById(id));
+        list.addAll(getGreatGreatGreatGreatGreatGreatGrandParrentsOfChinById(id));
+        list.removeIf(chin -> chin == null);
         return list;
     }
 
-    private Iterable<Chin> m(long id, List list) {
+    private List<Chin> getGreatGreatGreatGrandParrentsOfChinById(long id) {
         Iterable<Chin> greatGreatGrandParrents = getGreatGreatGrandParrentsOfChinById(id);
+        List<Chin> list = new ArrayList<>();
         for (Chin chin : greatGreatGrandParrents) {
             saveParrentsOfParrentsInNGeneration(chin.getId(), list);
         }
@@ -98,11 +105,82 @@ public class ChinService {
         return list;
     }
 
-    private void saveParrentsOfParrentsInNGeneration(long id, List list) {
+    private List<Chin> getGreatGreatGreatGreatGrandParrentsOfChinById(long id) {
+        Iterable<Chin> greatGreatGreatGrandParrents = getGreatGreatGreatGrandParrentsOfChinById(id);
+        List<Chin> list = new ArrayList<>();
+        greatGreatGreatGrandParrents.forEach(
+                chin -> {
+                    if (chin != null) {saveParrentsOfParrentsInNGeneration(chin.getId(), list);}
+                });
+        return list;
+    }
+
+    private List<Chin> getGreatGreatGreatGreatGreatGrandParrentsOfChinById(long id) {
+        Iterable<Chin> greatGreatGraetGreatGreatGrandParrents = getGreatGreatGreatGreatGrandParrentsOfChinById(id);
+        List<Chin> list = new ArrayList<>();
+        greatGreatGraetGreatGreatGrandParrents.forEach(
+                chin -> {
+                    if (chin != null) {saveParrentsOfParrentsInNGeneration(chin.getId(), list);}
+                });
+
+        return list;
+    }
+
+    private List<Chin> getGreatGreatGreatGreatGreatGreatGrandParrentsOfChinById(long id) {
+        Iterable<Chin> greatGreatGreatGraetGreatGreatGrandParrents = getGreatGreatGreatGreatGreatGrandParrentsOfChinById(id);
+        List<Chin> list = new ArrayList<>();
+        greatGreatGreatGraetGreatGreatGrandParrents.forEach(
+                chin -> {
+                    if (chin != null) {saveParrentsOfParrentsInNGeneration(chin.getId(), list);}
+                });
+
+        return list;
+    }
+
+    private void saveParrentsOfParrentsInNGeneration(long id, List<Chin> list) {
         Iterable<Chin> parrents = getParrentsOfChinById(id);
-        for (Chin chin : parrents) {
+        parrents.forEach(chin -> {if (chin != null) {list.add(chin);}});
+    }
+
+//    Others
+
+    public List<Chin> getBrothersAndSistersOfChinById(long id) {
+        Iterable<Chin> allChins = findAll();
+        List<Chin> list = new ArrayList<>();
+        for (Chin chin : allChins) {
             list.add(chin);
         }
+
+        long fatherId = getChinById(id).getFatherId();
+        long motherId = getChinById(id).getMotherId();
+
+        list.removeIf(chin -> !(chin.getFatherId() == fatherId && chin.getMotherId() == motherId));
+        list.removeIf(chin -> chin.getId() == id);
+        return list;
+    }
+
+    public Iterable<Chin> getHalfBrothersAndHalfSistersOfChinById(long id) {
+        Iterable<Chin> allChins = findAll();
+        List<Chin> list = new ArrayList<>();
+        for (Chin chin : allChins) {
+            list.add(chin);
+        }
+
+        long fatherId = getChinById(id).getFatherId();
+        long motherId = getChinById(id).getMotherId();
+
+        list.removeIf(chin -> !(chin.getFatherId() == fatherId ^ chin.getMotherId() == motherId));
+
+        return list;
+    }
+
+    public List<Chin> getUnclesAndAunts(long id) {
+        Iterable<Chin> parrens = getParrentsOfChinById(id);
+        List<Chin> unclesAndAunts = new ArrayList<>();
+        for (Chin chin : parrens) {
+            unclesAndAunts.addAll(getBrothersAndSistersOfChinById(chin.getId()));
+        }
+        return unclesAndAunts;
     }
 
 }

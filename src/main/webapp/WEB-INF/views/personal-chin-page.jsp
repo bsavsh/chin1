@@ -84,9 +84,9 @@
             </div>
 
             <div id="others-buttons-id" style="display: none;">
-                <button class="btn btn-default">Brothers & Sisters</button>
-                <button class="btn btn-default">Half brothers & half sisters</button>
-                <button class="btn btn-default">Uncles & Aunts</button>
+                <button id="brothers-sisters-id" class="btn btn-default">Brothers & Sisters</button>
+                <button id="half-brothers-and-half-sisters-id" class="btn btn-default">Half brothers & half sisters</button>
+                <button id="uncles-and-aunts-id", class="btn btn-default">Uncles & Aunts</button>
                 <button class="btn btn-default">Cousins</button>
             </div>
 

@@ -28,6 +28,11 @@ $(document).ready(function () {
     listenerToAncestorsByNamingThem("#great-grand-parrents-id", "great-grand-parrents", id);
     listenerToAncestorsByNamingThem("#great-great-grand-parrents-id", "great-great-grand-parrrents", id);
     listenerToAncestorsByNamingThem("#all-ancestors-up-to-10-id", "all-ancestors-up-to-10-generations", id);
+    listenerToAncestorsByNamingThem("#brothers-sisters-id", "brothers-and-sisters", id);
+    listenerToAncestorsByNamingThem("#half-brothers-and-half-sisters-id", "half-brothers-and-half-sisters", id);
+    listenerToAncestorsByNamingThem("#uncles-and-aunts-id", "uncles-and-aunts", id);
+
+
 
 });
 
