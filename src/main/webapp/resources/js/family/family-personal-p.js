@@ -17,6 +17,7 @@ $(document).ready(function () {
                     "<td>" + chin.color + "</td>" +
                     "<td>" + chin.fatherId + "</td>" +
                     "<td>" + chin.motherId + "</td>" +
+                    "<td>" + chin.born + "</td>" +
                     "<td><button type='button' class='btn btn-default chin-edit'" +
                     " data-toggle='modal' data-target='#editChinModalBlanckId'>Edit</button></td>"
                 "</tr>";

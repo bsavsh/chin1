@@ -1,6 +1,15 @@
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1" %>
 
+<br/>
+<h4>All chins</h4>
+<ul class="nav nav-tabs" role="tablist">
+    <li><button class="btn btn-default">gender</button></li>
+    <li><button class="btn btn-default">age</button></li>
+    <li><button class="btn btn-default">color</button></li>
+    <li><button class="btn btn-default">for sell</button></li>
+    <li><button class="btn btn-default">in family</button></li>
+</ul>
 <%-- to show all chins --%>
 <table class="table" id="chinTableId">
     <thead>
@@ -10,6 +19,7 @@
         <th>color</th>
         <th>fatherId</th>
         <th>motherId</th>
+        <th>born</th>
         <th>Edit</th>
     </tr>
     </thead>

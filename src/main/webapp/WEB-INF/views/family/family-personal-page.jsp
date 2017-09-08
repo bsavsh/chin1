@@ -8,6 +8,7 @@
         <th>color</th>
         <th>fatherId</th>
         <th>motherId</th>
+        <th>born</th>
         <th>Edit</th>
     </tr>
     </thead>

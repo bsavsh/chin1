@@ -23,6 +23,10 @@ public class ChinService {
         return chinRepository.findOne(id);
     }
 
+    public Iterable<Chin> getChinsByGender(String gender) {
+        return chinRepository.getChinsBySex(gender);
+    }
+
     public void deleteChinById(long id) {
         chinRepository.delete(id);
     }

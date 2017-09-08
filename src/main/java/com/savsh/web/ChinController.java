@@ -20,6 +20,14 @@ public class ChinController {
         return chinService.findAll();
     }
 
+    @RequestMapping(value = "/query", method = RequestMethod.GET)
+    public Iterable<Chin> getChinsByQuery(@RequestParam(value = "gender", required = false) String gender) {
+        if (gender != null) {
+            return chinService.getChinsByGender(gender);
+        }
+        return chinService.findAll();
+    }
+
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
     public Chin getChinById(@PathVariable long id) {
         return chinService.getChinById(id);

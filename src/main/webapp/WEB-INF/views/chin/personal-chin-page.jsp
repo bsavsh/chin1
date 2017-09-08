@@ -68,7 +68,7 @@
 
     </div>
     <div class="col-md-6">
-        <div id="blood-relation-info" style="display: none;">
+        <div id="blood-relation-info">
             <button id="offspring-id" class="btn btn-default">Offspring</button>
             <button id="ancestors-id" class="btn btn-default">Ancestors</button>
             <button id="others-id" class="btn btn-default">Others</button><br/><br/>
@@ -88,7 +88,7 @@
                 <button id="cousins-id", class="btn btn-default">Cousins</button>
             </div>
 
-            <div id="offspring-buttons-id" style="display: none;">
+            <div id="offspring-buttons-id">
                 <button id="first-offspring-id" class="btn btn-default">1st line offspring</button>
                 <button id="second-offspring-id" class="btn btn-default">2nd line offspring</button>
                 <button id="all-offspring-id" class="btn btn-default">All offspring</button>
@@ -104,6 +104,7 @@
                     <th>color</th>
                     <th>fatherId</th>
                     <th>motherId</th>
+                    <th>born</th>
                 </tr>
                 </thead>
                 <tbody>

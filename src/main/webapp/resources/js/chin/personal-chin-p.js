@@ -17,6 +17,31 @@ $(document).ready(function () {
         }
     });
 
+
+    $('#chinTableId tbody > tr').remove();
+    let urlForParrents = "http://localhost:8080/" + "first-offspring" + "/" + id;
+    $.ajax({
+        url: urlForParrents,
+        type: 'GET',
+        success: function(result) {
+            let chinList = result;
+            $.each(chinList, function(i, chin) {
+                let url = "http://localhost:8080/chin?id=" + chin.id;
+                let newRowContent =
+                    "<tr>" +
+                    "<td> <a href= " + url + ">" + chin.id + "</a></td>" +
+                    "<td>" + chin.sex + "</td>" +
+                    "<td>" + chin.color + "</td>" +
+                    "<td>" + chin.fatherId + "</td>" +
+                    "<td>" + chin.motherId + "</td>" +
+                    "<td>" + chin.born + "</td>" +
+                    "</tr>";
+
+                $("#chinTableId tbody").append(newRowContent);
+            });
+        }
+    });
+
     listenerToIndexData();
     listenerToBloodRelation();
     listenerToAncestors();
@@ -86,8 +111,6 @@ function listenerToAncestorsByNamingThem(buttonId, name, id) {
 function getAncestorsByNamingThemAndId(name, id) {
     $('#chinTableId tbody > tr').remove();
     let urlForParrents = "http://localhost:8080/" + name + "/" + id;
-    console.log(urlForParrents);
-
     $.ajax({
         url: urlForParrents,
         type: 'GET',
@@ -102,6 +125,7 @@ function getAncestorsByNamingThemAndId(name, id) {
                     "<td>" + chin.color + "</td>" +
                     "<td>" + chin.fatherId + "</td>" +
                     "<td>" + chin.motherId + "</td>" +
+                    "<td>" + chin.born + "</td>" +
                 "</tr>";
 
                 $("#chinTableId tbody").append(newRowContent);
