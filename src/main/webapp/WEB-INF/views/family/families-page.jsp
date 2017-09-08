@@ -10,6 +10,7 @@
         <th>date of formation</th>
         <th>description</th>
         <th>Edit</th>
+        <th>Delete</th>
     </tr>
     </thead>
     <tbody>
@@ -19,7 +20,7 @@
 
 
 
-<%-- Modal --%>
+<%-- Modal Edit --%>
 <div class="modal fade" id="editFamilyModalBlanckId" role="dialog">
     <div class="modal-dialog">
 
@@ -91,5 +92,31 @@
 
     </div>
 </div>
+
+
+<div class="modal fade" id="deleteFamilyModalBlanckId" role="dialog">
+    <div class="modal-dialog">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close modalCloseEditFamilyButton" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Delete Chin</h4>
+            </div>
+            <div class="modal-body">
+                <%-- yes or cancel --%>
+                <h3>Do you really want to delete Family?</h3>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default"
+                        data-dismiss="modal" id="modalDeleteFamilyButtonId">Delete</button>
+                <button type="button" class="btn btn-default modalCloseEditFamilyButton"
+                        data-dismiss="modal">Cancel</button>
+            </div>
+        </div>
+
+    </div>
+</div>
+
 
 <script src='${pageContext.request.contextPath}/resources/js/family/families-p.js'></script>

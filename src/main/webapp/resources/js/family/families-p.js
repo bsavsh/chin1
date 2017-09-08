@@ -24,7 +24,9 @@ function getAllFamilies() {
                     "<td>" + family.dateOfFormation + "</td>" +
                     "<td>" + family.description + "</td>" +
                     "<td><button type='button' class='btn btn-default family-edit'" +
-                    " data-toggle='modal' data-target='#editFamilyModalBlanckId'>Edit</button></td>"
+                    " data-toggle='modal' data-target='#editFamilyModalBlanckId'>Edit</button></td>" +
+                    "<td><button type='button' class='btn btn-default family-delete'" +
+                    " data-toggle='modal' data-target='#deleteFamilyModalBlanckId'>Delete</button></td>"
                 "</tr>";
 
                 $("#familyTableId tbody").append(newRowContent);
@@ -35,6 +37,25 @@ function getAllFamilies() {
                 getFamilyById(familyId);
             });
 
+            $('.family-delete').click(function() {
+                let id = $(this).parents('tr').find('td').eq(0).text();
+                $('#modalDeleteFamilyButtonId').click(function() {
+                    let rootUrl = "http://localhost:8080/families";
+                    $.ajax({
+                        type: 'DELETE',
+                        url: rootUrl + '/' + id,
+                        dataType: "json",
+                        success: function() {
+                            $('#familyTableId tbody > tr').remove();
+                            getAllFamilies();
+                        },
+                        error: function(){
+                            $('#familyTableId tbody > tr').remove();
+                            getAllFamilies();
+                        }
+                    });
+                });
+            });
         }
     });
 }
