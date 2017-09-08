@@ -1,17 +1,17 @@
 $(document).ready(function() {
 
-    let url = "http://localhost:8080/chins";
+    let url = "http://localhost:8080/families";
 
     $('#register-button-id').click(function() {
         let dataSender = {
             id: null,
-            sex: $('#chin-sex').val(),
-            color: $('#chin-color').val(),
-            fatherId: $('#chin-fatherId').val(),
-            motherId: $('#chin-motherId').val(),
-            born: $('#chin-born').val(),
-            name: $('#chin-name').val()
+            husbandId: $('#family-husbandId').val(),
+            wifeId: $('#family-wifeId').val(),
+            numberOfFamily: $('#family-numberOfFamily').val(),
+            dateOfFormation: $('#family-dateOfFormation').val(),
+            description: $('#family-description').val()
         };
+
 
         $.ajax({
             type: 'POST',
@@ -21,7 +21,7 @@ $(document).ready(function() {
             data: JSON.stringify(dataSender),
             success: function(data){
                 if (data.id !== undefined) {
-                    window.location.replace("http://localhost:8080/chin?id=" + data.id);
+                    window.location.replace("http://localhost:8080/families-page");
                 } else {
                     let str = "";
                     for (let i = 0; i < data.length; i++) {
@@ -33,7 +33,7 @@ $(document).ready(function() {
 
             },
             error: function(){
-                alert('register Chin error: ');
+                alert('register family error: ');
 
             }
         });

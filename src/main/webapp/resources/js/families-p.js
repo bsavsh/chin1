@@ -2,6 +2,7 @@ $(document).ready(function(){
 
     getAllFamilies();
     saveEditedFamily();
+    listenerToRegisterFamilyButton();
 });
 
 let url = "http://localhost:8080/families";
@@ -13,13 +14,13 @@ function getAllFamilies() {
         success: function(result) {
             let familiesList = result;
             $.each(familiesList, function(i, family) {
-                let url = "http://localhost:8080/family?id=" + family.id;
+                let url = "http://localhost:8080/family?number=" + family.numberOfFamily;
                 let newRowContent =
                     "<tr>" +
-                    "<td> <a href= " + url + ">" + family.id + "</a></td>" +
+                    "<td>" + family.id + "</td>" +
+                    "<td> <a href= " + url + ">" + family.numberOfFamily + "</a></td>" +
                     "<td>" + family.husbandId + "</td>" +
                     "<td>" + family.wifeId + "</td>" +
-                    "<td>" + family.numberOfFamily + "</td>" +
                     "<td>" + family.dateOfFormation + "</td>" +
                     "<td>" + family.description + "</td>" +
                     "<td><button type='button' class='btn btn-default family-edit'" +
@@ -100,6 +101,12 @@ function getFamilyById(id) {
             $('#family-dateOfFormation').val(data.dateOfFormation);
             $('#family-description').val(data.description);
         }
+    });
+}
+
+function listenerToRegisterFamilyButton() {
+    $('#registerFamilyPageButtonId').click(function() {
+        window.location.replace("http://localhost:8080/register-family-page");
     });
 }
 

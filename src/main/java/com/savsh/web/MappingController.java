@@ -45,4 +45,15 @@ public class MappingController {
     public String getFamilies() {
         return "families-page";
     }
+
+    @RequestMapping(value = "/register-family-page", method = RequestMethod.GET)
+    public String getRegisterPageForFamily() {
+        return "register-family-page";
+    }
+
+    @RequestMapping(value = "/family", method = RequestMethod.GET)
+    public String getPersonalFamilyPage(@RequestParam("number") long number, Model model) {
+        model.addAttribute("familyNumber", number);
+        return "family-personal-page";
+    }
 }

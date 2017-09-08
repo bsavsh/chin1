@@ -1,5 +1,6 @@
 package com.savsh.web;
 
+import com.savsh.entity.Chin;
 import com.savsh.entity.Family;
 import com.savsh.service.FamilyService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -37,5 +38,11 @@ public class FamilyController {
     @RequestMapping(method = RequestMethod.POST)
     public Family insertChin(@Valid @RequestBody Family family) {
         return familyService.insertFamily(family);
+    }
+
+    @RequestMapping(value = "/whole-by-number/{id}", method = RequestMethod.GET)
+    public Iterable<Chin> getWholeFamilyByNumberOfFamily(@PathVariable long id) {
+        System.out.println(id);
+        return familyService.getFamilyByNumber(id);
     }
 }

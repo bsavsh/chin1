@@ -14,19 +14,27 @@
     </definition>
 
     <definition name="chins-page" extends="base">
-        <put-attribute name="body" value="/WEB-INF/views/chins-page.jsp" />
+        <put-attribute name="body" value="/WEB-INF/views/chin/chins-page.jsp" />
     </definition>
 
     <definition name="personal-chin-page" extends="base">
-        <put-attribute name="body" value="/WEB-INF/views/personal-chin-page.jsp" />
+        <put-attribute name="body" value="/WEB-INF/views/chin/personal-chin-page.jsp" />
     </definition>
 
     <definition name="register-page" extends="base">
-        <put-attribute name="body" value="/WEB-INF/views/register-page.jsp" />
+        <put-attribute name="body" value="/WEB-INF/views/chin/register-page.jsp" />
     </definition>
 
     <definition name="families-page" extends="base">
-        <put-attribute name="body" value="/WEB-INF/views/families-page.jsp" />
+        <put-attribute name="body" value="/WEB-INF/views/family/families-page.jsp" />
+    </definition>
+
+    <definition name="register-family-page" extends="base">
+        <put-attribute name="body" value="/WEB-INF/views/family/register-family-page.jsp" />
+    </definition>
+
+    <definition name="family-personal-page" extends="base">
+        <put-attribute name="body" value="/WEB-INF/views/family/family-personal-page.jsp" />
     </definition>
 
 </tiles-definitions>

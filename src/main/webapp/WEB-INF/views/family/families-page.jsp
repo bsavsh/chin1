@@ -1,12 +1,12 @@
 <h1>Families Page, Welcome to new level of family management</h1>
-
+<button class="btn btn-default" id="registerFamilyPageButtonId">Register Family</button>
 <table class="table" id="familyTableId">
     <thead>
     <tr>
         <th>id</th>
+        <th>number Of family</th>
         <th>husbandId</th>
         <th>wifeId</th>
-        <th>number Of family</th>
         <th>date of formation</th>
         <th>description</th>
         <th>Edit</th>
@@ -41,6 +41,13 @@
 
                     <li class="list-group-item">
                         <div class="row">
+                            <div class="col-md-6">N%:</div>
+                            <div class="col-md-6"><input type="number" id="family-numberOfFamily"></input></div>
+                        </div>
+                    </li>
+
+                    <li class="list-group-item">
+                        <div class="row">
                             <div class="col-md-6">HusbandId:</div>
                             <div class="col-md-6"><input type="number" id="family-husbandId"></input></div>
                         </div>
@@ -50,13 +57,6 @@
                         <div class="row">
                             <div class="col-md-6">WifeId:</div>
                             <div class="col-md-6"><input type="number" id="family-wifeId"></input></div>
-                        </div>
-                    </li>
-
-                    <li class="list-group-item">
-                        <div class="row">
-                            <div class="col-md-6">N%:</div>
-                            <div class="col-md-6"><input type="number" id="family-numberOfFamily"></input></div>
                         </div>
                     </li>
 
