@@ -69,5 +69,4 @@
     </div>
 </div>
 
-<script src="register-file.js"></script>
-
+<script src='${pageContext.request.contextPath}/resources/js/chin/register-file.js'></script>

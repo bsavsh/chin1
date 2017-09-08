@@ -42,7 +42,6 @@ public class FamilyController {
 
     @RequestMapping(value = "/whole-by-number/{id}", method = RequestMethod.GET)
     public Iterable<Chin> getWholeFamilyByNumberOfFamily(@PathVariable long id) {
-        System.out.println(id);
         return familyService.getFamilyByNumber(id);
     }
 }

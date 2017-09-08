@@ -92,5 +92,4 @@
     </div>
 </div>
 
-
-<script src="families-p.js"></script>
+<script src='${pageContext.request.contextPath}/resources/js/family/families-p.js'></script>

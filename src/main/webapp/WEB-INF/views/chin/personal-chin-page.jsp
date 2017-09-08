@@ -1,5 +1,3 @@
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-
 
 <br><br>
 <%-- to show detail info of chinchilla--%>
@@ -121,4 +119,5 @@
 
 <input type="hidden" id="chinId" value='${chinId}'/>
 
-<script src="personal-chin-p.js"></script>
+
+<script src='${pageContext.request.contextPath}/resources/js/chin/personal-chin-p.js'></script>

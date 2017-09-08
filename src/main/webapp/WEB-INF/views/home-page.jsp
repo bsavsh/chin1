@@ -1,4 +1,2 @@
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-
-
-<script src="home-p.js"></script>
+<h1>Home page</h1>
+<script src='${pageContext.request.contextPath}/resources/js/home-p.js'></script>

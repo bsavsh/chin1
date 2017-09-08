@@ -105,4 +105,4 @@
 
 <input type="hidden" id="familyNumber" value='${familyNumber}'/>
 
-<script src="family-personal-p.js"></script>
+<script src='${pageContext.request.contextPath}/resources/js/family/family-personal-p.js'></script>

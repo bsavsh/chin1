@@ -64,5 +64,4 @@
     </div>
 </div>
 
-<script src="register-family-file.js"></script>
-
+<script src='${pageContext.request.contextPath}/resources/js/family/register-family-file.js'></script>

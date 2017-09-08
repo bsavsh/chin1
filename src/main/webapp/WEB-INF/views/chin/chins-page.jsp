@@ -1,5 +1,5 @@
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1" %>
 
 <%-- to show all chins --%>
 <table class="table" id="chinTableId">
@@ -105,5 +105,5 @@
     </div>
 </div>
 
-<script src="chins-p.js"></script>
+<script src='${pageContext.request.contextPath}/resources/js/chin/chins-p.js'></script>
 
