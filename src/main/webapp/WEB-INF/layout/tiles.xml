@@ -25,4 +25,8 @@
         <put-attribute name="body" value="/WEB-INF/views/register-page.jsp" />
     </definition>
 
+    <definition name="families-page" extends="base">
+        <put-attribute name="body" value="/WEB-INF/views/families-page.jsp" />
+    </definition>
+
 </tiles-definitions>

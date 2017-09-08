@@ -28,13 +28,11 @@ function getAllChins() {
                 "</tr>";
 
                 $("#chinTableId tbody").append(newRowContent);
-            })
+            });
 
             // to pass chin id into function that will fill edit-modal
             $('.chin-edit').click(function() {
                 let chinId = $(this).parents('tr').find('td').eq(0).text();
-                // alert(managerId);
-                $("errorEdit")
                 getChinById(chinId);
             });
         }

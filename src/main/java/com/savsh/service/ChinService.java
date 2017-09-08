@@ -198,6 +198,8 @@ public class ChinService {
         return cousins;
     }
 
+//    Offspring
+
     public List<Chin> getChildrenOfChinById(long id) {
         Iterable<Chin> allChins = findAll();
         List<Chin> children = new ArrayList<>();

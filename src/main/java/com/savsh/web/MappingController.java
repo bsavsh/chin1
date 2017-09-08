@@ -15,7 +15,7 @@ import org.springframework.web.servlet.ModelAndView;
 import javax.validation.Valid;
 
 @Controller
-public class HelloController {
+public class MappingController {
 
     @Autowired
     private ChinService service;
@@ -39,5 +39,10 @@ public class HelloController {
     @RequestMapping(value = "/register", method = RequestMethod.GET)
     public String registerChin() {
         return "register-page";
+    }
+
+    @RequestMapping(value = "/families-page", method = RequestMethod.GET)
+    public String getFamilies() {
+        return "families-page";
     }
 }
