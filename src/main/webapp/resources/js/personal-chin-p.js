@@ -31,6 +31,11 @@ $(document).ready(function () {
     listenerToAncestorsByNamingThem("#brothers-sisters-id", "brothers-and-sisters", id);
     listenerToAncestorsByNamingThem("#half-brothers-and-half-sisters-id", "half-brothers-and-half-sisters", id);
     listenerToAncestorsByNamingThem("#uncles-and-aunts-id", "uncles-and-aunts", id);
+    listenerToAncestorsByNamingThem("#cousins-id", "cousins", id);
+    listenerToAncestorsByNamingThem("#first-offspring-id", "first-offspring", id);
+    listenerToAncestorsByNamingThem("#second-offspring-id", "second-offspring", id);
+    listenerToAncestorsByNamingThem("#all-offspring-id", "all-offspring", id);
+
 
 
 

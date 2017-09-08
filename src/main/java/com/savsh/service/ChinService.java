@@ -2,6 +2,7 @@ package com.savsh.service;
 
 import com.savsh.entity.Chin;
 import com.savsh.repository.ChinRepository;
+import com.sun.org.apache.xerces.internal.xinclude.XIncludeTextReader;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -182,5 +183,77 @@ public class ChinService {
         }
         return unclesAndAunts;
     }
+
+    public List<Chin> getCousinsOfChinById(long id) {
+        Iterable<Chin> unclesAndAunts = getUnclesAndAunts(id);
+        Iterable<Chin> allChin = findAll();
+        List<Chin> cousins = new ArrayList<>();
+        for (Chin chin : allChin) {
+            for (Chin uncleOrAunt: unclesAndAunts) {
+                if (chin.getFatherId() == uncleOrAunt.getId() || chin.getMotherId() == uncleOrAunt.getId()) {
+                    cousins.add(chin);
+                }
+            }
+        }
+        return cousins;
+    }
+
+    public List<Chin> getChildrenOfChinById(long id) {
+        Iterable<Chin> allChins = findAll();
+        List<Chin> children = new ArrayList<>();
+        for (Chin chin : allChins) {
+            Iterable<Chin> parrens = getParrentsOfChinById(chin.getId());
+            for (Chin parrent : parrens) {
+                if (parrent.getId() == id) {
+                    children.add(chin);
+                }
+            }
+
+        }
+        return children;
+    }
+
+    public List<Chin> getGrandChildrenOfChinById(long id) {
+        Iterable<Chin> allChins = findAll();
+        List<Chin> grandChildren = new ArrayList<>();
+        for (Chin chin : allChins) {
+            Iterable<Chin> grandParrents = getGrandParrentsOfChinById(chin.getId());
+            for (Chin grandParren : grandParrents) {
+                if (grandParren.getId() == id) {
+                    grandChildren.add(chin);
+                }
+            }
+        }
+        return grandChildren;
+    }
+
+   public List<Chin> getAllChildrenOfChinById(long id) {
+        Iterable<Chin> allChins = findAll();
+        List<Chin> allChildrenOfAllGenertion = new ArrayList<>();
+        for (Chin chin : allChins) {
+            Iterable<Chin> greatGrandParrents = getGreatGrandParrentsOfChinById(chin.getId());
+            for (Chin greatGrandParrent : greatGrandParrents) {
+                if (greatGrandParrent.getId() == id) {
+                    allChildrenOfAllGenertion.add(chin);
+                }
+            }
+
+            Iterable<Chin> greatGreatGrandParrents = getGreatGreatGrandParrentsOfChinById(chin.getId());
+            for (Chin greatGreatGrandParrent : greatGreatGrandParrents) {
+                if (greatGreatGrandParrent.getId() == id) {
+                    allChildrenOfAllGenertion.add(chin);
+                }
+            }
+
+            Iterable<Chin> allGenerationUpTo10Children = getAllAncestorsUpTo10Generations(chin.getId());
+            for (Chin allGenerationChin : allGenerationUpTo10Children) {
+                if (allGenerationChin.getId() == id) {
+                    allChildrenOfAllGenertion.add(chin);
+                }
+            }
+        }
+
+        return allChildrenOfAllGenertion;
+   }
 
 }

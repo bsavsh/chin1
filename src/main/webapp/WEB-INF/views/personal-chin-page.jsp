@@ -87,13 +87,13 @@
                 <button id="brothers-sisters-id" class="btn btn-default">Brothers & Sisters</button>
                 <button id="half-brothers-and-half-sisters-id" class="btn btn-default">Half brothers & half sisters</button>
                 <button id="uncles-and-aunts-id", class="btn btn-default">Uncles & Aunts</button>
-                <button class="btn btn-default">Cousins</button>
+                <button id="cousins-id", class="btn btn-default">Cousins</button>
             </div>
 
             <div id="offspring-buttons-id" style="display: none;">
-                <button class="btn btn-default">1st line offspring</button>
-                <button class="btn btn-default">2nd line offspring</button>
-                <button class="btn btn-default">All offspring</button>
+                <button id="first-offspring-id" class="btn btn-default">1st line offspring</button>
+                <button id="second-offspring-id" class="btn btn-default">2nd line offspring</button>
+                <button id="all-offspring-id" class="btn btn-default">All offspring</button>
             </div>
 
             <br/>
