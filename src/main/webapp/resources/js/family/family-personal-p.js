@@ -18,6 +18,8 @@ $(document).ready(function () {
                     "<td>" + chin.fatherId + "</td>" +
                     "<td>" + chin.motherId + "</td>" +
                     "<td>" + chin.born + "</td>" +
+                    "<td>" + chin.inFamily + "</td>" +
+                    "<td>" + chin.name + "</td>" +
                     "<td><button type='button' class='btn btn-default chin-edit'" +
                     " data-toggle='modal' data-target='#editChinModalBlanckId'>Edit</button></td>"
                 "</tr>";
@@ -47,6 +49,8 @@ function saveEditedChin() {
             motherId: $('#chin-motherId').val(),
             born: $('#chin-born').val(),
             deceased: $('#chin-deceased').val(),
+            sold: $('#chin-sold').val(),
+            inFamily: $('#chin-inFamily').val(),
             name: $('#chin-name').val
         };
 
@@ -99,6 +103,8 @@ function getChinById(id) {
             $('#chin-motherId').val(data.motherId);
             $('#chin-born').val(data.born);
             $('#chin-deceased').val(data.deceased);
+            $('#chin-sold').val(data.sold);
+            $('#chin-inFamily').val(data.inFamily);
             $('#chin-name').val(data.name);
         }
     });

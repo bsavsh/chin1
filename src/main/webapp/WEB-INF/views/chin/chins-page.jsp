@@ -3,13 +3,17 @@
 
 <br/>
 <h4>All chins</h4>
+<button class="btn btn-default" id="registerChinId">Register</button>
+<br/>
+
 <ul class="nav nav-tabs" role="tablist">
-    <li><button class="btn btn-default">gender</button></li>
-    <li><button class="btn btn-default">age</button></li>
-    <li><button class="btn btn-default">color</button></li>
-    <li><button class="btn btn-default">for sell</button></li>
-    <li><button class="btn btn-default">in family</button></li>
+    <li><input type="text" class="form-control" id="chin-sex-query-id" placeholder="Enter sex"/></li>
+    <li><input type="text" class="form-control" id="chin-color-query-id" placeholder="Enter color"/></li>
+    <li><input type="date" class="form-control" id="chin-from-query-id" placeholder="Enter date from"/></li>
+    <li><input type="date" class="form-control" id="chin-to-query-id" placeholder="Enter date to"/></li>
+    <li><button class="btn btn-default" id="selectQueryButtonId">Select</button></li>
 </ul>
+<br/>
 <%-- to show all chins --%>
 <table class="table" id="chinTableId">
     <thead>
@@ -20,6 +24,8 @@
         <th>fatherId</th>
         <th>motherId</th>
         <th>born</th>
+        <th>in family</th>
+        <th>name</th>
         <th>Edit</th>
     </tr>
     </thead>
@@ -88,6 +94,20 @@
                         <div class="row">
                             <div class="col-md-6">Deceased:</div>
                             <div class="col-md-6"><input type="text" id="chin-deceased"></input></div>
+                        </div>
+                    </li>
+
+                    <li class="list-group-item">
+                        <div class="row">
+                            <div class="col-md-6">Sold:</div>
+                            <div class="col-md-6"><input type="text" id="chin-sold"></input></div>
+                        </div>
+                    </li>
+
+                    <li class="list-group-item">
+                        <div class="row">
+                            <div class="col-md-6">In Family:</div>
+                            <div class="col-md-6"><input type="text" id="chin-inFamily"></input></div>
                         </div>
                     </li>
 

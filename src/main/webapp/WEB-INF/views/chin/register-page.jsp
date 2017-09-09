@@ -41,7 +41,6 @@
                     <input type="date" class="form-control" id="chin-born" placeholder="Enter birthday"/>
                 </div>
             </div>
-
             <div class="form-group">
                 <label class="control-label col-md-4">Name:</label>
                 <div class="col-md-8">

@@ -2,6 +2,8 @@ $(document).ready(function(){
 
     getAllChins();
     saveEditedChin();
+    listenerToSelectQueryButton();
+    listenerToRegisterButton();
 
 });
 
@@ -24,6 +26,8 @@ function getAllChins() {
                     "<td>" + chin.fatherId + "</td>" +
                     "<td>" + chin.motherId + "</td>" +
                     "<td>" + chin.born + "</td>" +
+                    "<td>" + chin.inFamily + "</td>" +
+                    "<td>" + chin.name + "</td>" +
                     "<td><button type='button' class='btn btn-default chin-edit'" +
                     " data-toggle='modal' data-target='#editChinModalBlanckId'>Edit</button></td>"
                 "</tr>";
@@ -51,7 +55,9 @@ function saveEditedChin() {
             motherId: $('#chin-motherId').val(),
             born: $('#chin-born').val(),
             deceased: $('#chin-deceased').val(),
-            name: $('#chin-name').val
+            sold: $('#chin-sold').val(),
+            inFamily: $('#chin-inFamily').val(),
+            name: $('#chin-name').val()
         };
 
         $.ajax({
@@ -85,7 +91,7 @@ function saveEditedChin() {
 
     $(".modalCloseEditChinButton").click(function () {
         $("#errorMessagesId").hide();
-    })
+    });
 }
 
 // to fill modal edit form
@@ -103,7 +109,62 @@ function getChinById(id) {
             $('#chin-motherId').val(data.motherId);
             $('#chin-born').val(data.born);
             $('#chin-deceased').val(data.deceased);
+            $('#chin-sold').val(data.sold);
+            $('#chin-inFamily').val(data.inFamily);
             $('#chin-name').val(data.name);
         }
+    });
+}
+
+function listenerToRegisterButton() {
+    $('#registerChinId').click(function() {
+        window.location.replace("http://localhost:8080/register");
+    });
+}
+
+function listenerToSelectQueryButton() {
+    $('#selectQueryButtonId').click(function() {
+        alert('hello');
+        let gender = $('#chin-sex-query-id').val();
+        let color = $('#chin-color-query-id').val();
+        let from = $('#chin-from-query-id').val();
+        let to = $('#chin-to-query-id').val();
+
+        let url = "http://localhost:8080/chins/query?gender=" + gender
+            + "&color=" + color + "&bornAfter=" + from + "&bornBefore=" + to;
+
+        alert(url);
+        $.ajax({
+            url: url,
+            type: 'GET',
+            success: function(result) {
+                alert("success");
+                $('#chinTableId tbody > tr').remove();
+                let chinList = result;
+                $.each(chinList, function(i, chin) {
+                    let url = "http://localhost:8080/chin?id=" + chin.id;
+                    let newRowContent =
+                        "<tr>" +
+                        "<td> <a href= " + url + ">" + chin.id + "</a></td>" +
+                        "<td>" + chin.sex + "</td>" +
+                        "<td>" + chin.color + "</td>" +
+                        "<td>" + chin.fatherId + "</td>" +
+                        "<td>" + chin.motherId + "</td>" +
+                        "<td>" + chin.born + "</td>" +
+                        "<td>" + chin.name + "</td>" +
+                        "<td><button type='button' class='btn btn-default chin-edit'" +
+                        " data-toggle='modal' data-target='#editChinModalBlanckId'>Edit</button></td>"
+                    "</tr>";
+
+                    $("#chinTableId tbody").append(newRowContent);
+                });
+
+                // to pass chin id into function that will fill edit-modal
+                $('.chin-edit').click(function() {
+                    let chinId = $(this).parents('tr').find('td').eq(0).text();
+                    getChinById(chinId);
+                });
+            }
+        });
     });
 }

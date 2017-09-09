@@ -1,4 +1,3 @@
-
 <br><br>
 <%-- to show detail info of chinchilla--%>
 <div row>
@@ -59,6 +58,20 @@
 
                 <li class="list-group-item">
                     <div class="row">
+                        <div class="col-md-6">Sold:</div>
+                        <div class="col-md-6"><span id="chin-sold"></span></div>
+                    </div>
+                </li>
+
+                <li class="list-group-item">
+                    <div class="row">
+                        <div class="col-md-6">In Family:</div>
+                        <div class="col-md-6"><span id="chin-inFamily"></span></div>
+                    </div>
+                </li>
+
+                <li class="list-group-item">
+                    <div class="row">
                         <div class="col-md-6">Name:</div>
                         <div class="col-md-6"><span id="chin-name"></span></div>
                     </div>
@@ -71,21 +84,24 @@
         <div id="blood-relation-info">
             <button id="offspring-id" class="btn btn-default">Offspring</button>
             <button id="ancestors-id" class="btn btn-default">Ancestors</button>
-            <button id="others-id" class="btn btn-default">Others</button><br/><br/>
+            <button id="others-id" class="btn btn-default">Others</button>
+            <br/><br/>
 
             <div id="ancestor-buttons-id" style="display: none;">
                 <button id="parrents-id" class="btn btn-default">Parents</button>
                 <button id="grand-parrents-id" class="btn btn-default">GrandParents</button>
-                <button id="great-grand-parrents-id", class="btn btn-default">Great GrandParents</button>
-                <button id="great-great-grand-parrents-id", class="btn btn-default">Great Great GrandParents</button>
-                <button id="all-ancestors-up-to-10-id", class="btn btn-default">All ancestors up to 10 generations</button>
+                <button id="great-grand-parrents-id" , class="btn btn-default">Great GrandParents</button>
+                <button id="great-great-grand-parrents-id" , class="btn btn-default">Great Great GrandParents</button>
+                <button id="all-ancestors-up-to-10-id" , class="btn btn-default">All ancestors up to 10 generations
+                </button>
             </div>
 
             <div id="others-buttons-id" style="display: none;">
                 <button id="brothers-sisters-id" class="btn btn-default">Brothers & Sisters</button>
-                <button id="half-brothers-and-half-sisters-id" class="btn btn-default">Half brothers & half sisters</button>
-                <button id="uncles-and-aunts-id", class="btn btn-default">Uncles & Aunts</button>
-                <button id="cousins-id", class="btn btn-default">Cousins</button>
+                <button id="half-brothers-and-half-sisters-id" class="btn btn-default">Half brothers & half sisters
+                </button>
+                <button id="uncles-and-aunts-id" , class="btn btn-default">Uncles & Aunts</button>
+                <button id="cousins-id" , class="btn btn-default">Cousins</button>
             </div>
 
             <div id="offspring-buttons-id">
@@ -105,6 +121,8 @@
                     <th>fatherId</th>
                     <th>motherId</th>
                     <th>born</th>
+                    <th>name</th>
+
                 </tr>
                 </thead>
                 <tbody>

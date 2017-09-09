@@ -6,6 +6,7 @@ import com.sun.org.apache.xerces.internal.xinclude.XIncludeTextReader;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -21,10 +22,6 @@ public class ChinService {
 
     public Chin getChinById(long id) {
         return chinRepository.findOne(id);
-    }
-
-    public Iterable<Chin> getChinsByGender(String gender) {
-        return chinRepository.getChinsBySex(gender);
     }
 
     public void deleteChinById(long id) {
@@ -63,7 +60,11 @@ public class ChinService {
         Iterable<Chin> parrents = getParrentsOfChinById(id);
         List<Chin> list = new ArrayList<>();
         parrents.forEach(
-                chin -> {if (chin != null) {saveParrentsOfParrentsInNGeneration(chin.getId(), list);}}
+                chin -> {
+                    if (chin != null) {
+                        saveParrentsOfParrentsInNGeneration(chin.getId(), list);
+                    }
+                }
         );
         list.removeIf(chin -> chin == null);
         return list;
@@ -73,7 +74,9 @@ public class ChinService {
         Iterable<Chin> grandParrents = getGrandParrentsOfChinById(id);
         List<Chin> list = new ArrayList<>();
         grandParrents.forEach(chin -> {
-            if (chin != null) {saveParrentsOfParrentsInNGeneration(chin.getId(), list);}
+            if (chin != null) {
+                saveParrentsOfParrentsInNGeneration(chin.getId(), list);
+            }
         });
         list.removeIf(chin -> chin == null);
         return list;
@@ -84,7 +87,9 @@ public class ChinService {
         List<Chin> list = new ArrayList<>();
         greatGrandParrents.forEach(
                 chin -> {
-                    if (chin != null) {saveParrentsOfParrentsInNGeneration(chin.getId(), list);}
+                    if (chin != null) {
+                        saveParrentsOfParrentsInNGeneration(chin.getId(), list);
+                    }
                 });
         list.removeIf(chin -> chin == null);
         return list;
@@ -115,7 +120,9 @@ public class ChinService {
         List<Chin> list = new ArrayList<>();
         greatGreatGreatGrandParrents.forEach(
                 chin -> {
-                    if (chin != null) {saveParrentsOfParrentsInNGeneration(chin.getId(), list);}
+                    if (chin != null) {
+                        saveParrentsOfParrentsInNGeneration(chin.getId(), list);
+                    }
                 });
         return list;
     }
@@ -125,7 +132,9 @@ public class ChinService {
         List<Chin> list = new ArrayList<>();
         greatGreatGraetGreatGreatGrandParrents.forEach(
                 chin -> {
-                    if (chin != null) {saveParrentsOfParrentsInNGeneration(chin.getId(), list);}
+                    if (chin != null) {
+                        saveParrentsOfParrentsInNGeneration(chin.getId(), list);
+                    }
                 });
 
         return list;
@@ -136,7 +145,9 @@ public class ChinService {
         List<Chin> list = new ArrayList<>();
         greatGreatGreatGraetGreatGreatGrandParrents.forEach(
                 chin -> {
-                    if (chin != null) {saveParrentsOfParrentsInNGeneration(chin.getId(), list);}
+                    if (chin != null) {
+                        saveParrentsOfParrentsInNGeneration(chin.getId(), list);
+                    }
                 });
 
         return list;
@@ -144,7 +155,11 @@ public class ChinService {
 
     private void saveParrentsOfParrentsInNGeneration(long id, List<Chin> list) {
         Iterable<Chin> parrents = getParrentsOfChinById(id);
-        parrents.forEach(chin -> {if (chin != null) {list.add(chin);}});
+        parrents.forEach(chin -> {
+            if (chin != null) {
+                list.add(chin);
+            }
+        });
     }
 
 //    Others
@@ -193,7 +208,7 @@ public class ChinService {
         Iterable<Chin> allChin = findAll();
         List<Chin> cousins = new ArrayList<>();
         for (Chin chin : allChin) {
-            for (Chin uncleOrAunt: unclesAndAunts) {
+            for (Chin uncleOrAunt : unclesAndAunts) {
                 if (chin.getFatherId() == uncleOrAunt.getId() || chin.getMotherId() == uncleOrAunt.getId()) {
                     cousins.add(chin);
                 }
@@ -233,7 +248,7 @@ public class ChinService {
         return grandChildren;
     }
 
-   public List<Chin> getAllChildrenOfChinById(long id) {
+    public List<Chin> getAllChildrenOfChinById(long id) {
         Iterable<Chin> allChins = findAll();
         List<Chin> allChildrenOfAllGenertion = new ArrayList<>();
         for (Chin chin : allChins) {
@@ -260,6 +275,31 @@ public class ChinService {
         }
 
         return allChildrenOfAllGenertion;
-   }
+    }
+
+//    get chins with queries
+
+    public Iterable<Chin> findAllWithQuery(String gender, String color, String after, String before) {
+
+        LocalDate dateOfBeginning = after.isEmpty() ? LocalDate.of(1900, 1, 1) : LocalDate.parse(after);
+        LocalDate dateOfEnding = before.isEmpty() ? LocalDate.now().plusMonths(1) : LocalDate.parse(before);
+
+        if (!gender.isEmpty() && !color.isEmpty()) {
+            return chinRepository.getChinsBySexAndColorAndBornAfterAndBornBefore(
+                    gender, color, dateOfBeginning, dateOfEnding);
+        }
+
+        if (!gender.isEmpty() && color.isEmpty()) {
+            return chinRepository.getChinsBySexAndBornAfterAndBornBefore(
+                    gender, dateOfBeginning, dateOfEnding);
+        }
+
+        if (gender.isEmpty() && !color.isEmpty()) {
+            return chinRepository.getChinsByColorAndBornAfterAndBornBefore(
+                    color, dateOfBeginning, dateOfEnding);
+        }
+
+        return chinRepository.getChinsByBornAfterAndBornBefore(dateOfBeginning, dateOfEnding);
+    }
 
 }

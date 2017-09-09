@@ -13,11 +13,14 @@ $(document).ready(function () {
             $('#chin-motherId').append(data.motherId);
             $('#chin-born').append(data.born);
             $('#chin-deceased').append(data.deceased);
+            $('#chin-sold').append(data.sold);
+            $('#chin-inFamily').append(data.inFamily);
             $('#chin-name').append(data.name);
         }
     });
 
 
+    // at page loading make ajax for first offspring of chin
     $('#chinTableId tbody > tr').remove();
     let urlForParrents = "http://localhost:8080/" + "first-offspring" + "/" + id;
     $.ajax({
@@ -35,6 +38,7 @@ $(document).ready(function () {
                     "<td>" + chin.fatherId + "</td>" +
                     "<td>" + chin.motherId + "</td>" +
                     "<td>" + chin.born + "</td>" +
+                    "<td>" + chin.name + "</td>" +
                     "</tr>";
 
                 $("#chinTableId tbody").append(newRowContent);
@@ -126,6 +130,7 @@ function getAncestorsByNamingThemAndId(name, id) {
                     "<td>" + chin.fatherId + "</td>" +
                     "<td>" + chin.motherId + "</td>" +
                     "<td>" + chin.born + "</td>" +
+                    "<td>" + chin.name + "</td>" +
                 "</tr>";
 
                 $("#chinTableId tbody").append(newRowContent);

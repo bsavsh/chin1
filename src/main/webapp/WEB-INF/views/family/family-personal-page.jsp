@@ -9,6 +9,8 @@
         <th>fatherId</th>
         <th>motherId</th>
         <th>born</th>
+        <th>inFamily</th>
+        <th>name</th>
         <th>Edit</th>
     </tr>
     </thead>
@@ -77,6 +79,20 @@
                         <div class="row">
                             <div class="col-md-6">Deceased:</div>
                             <div class="col-md-6"><input type="text" id="chin-deceased"></input></div>
+                        </div>
+                    </li>
+
+                    <li class="list-group-item">
+                        <div class="row">
+                            <div class="col-md-6">Sold:</div>
+                            <div class="col-md-6"><input type="text" id="chin-sold"></input></div>
+                        </div>
+                    </li>
+
+                    <li class="list-group-item">
+                        <div class="row">
+                            <div class="col-md-6">In Family:</div>
+                            <div class="col-md-6"><input type="text" id="chin-inFamily"></input></div>
                         </div>
                     </li>
 

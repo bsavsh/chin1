@@ -21,11 +21,11 @@ public class ChinController {
     }
 
     @RequestMapping(value = "/query", method = RequestMethod.GET)
-    public Iterable<Chin> getChinsByQuery(@RequestParam(value = "gender", required = false) String gender) {
-        if (gender != null) {
-            return chinService.getChinsByGender(gender);
-        }
-        return chinService.findAll();
+    public Iterable<Chin> getChinsByQuery(@RequestParam(value = "gender", required = false) String gender,
+                                          @RequestParam(value = "color", required = false) String color,
+                                          @RequestParam(value = "bornAfter", required = false) String bornAfter,
+                                          @RequestParam(value = "bornBefore", required = false) String bornBefore){
+        return chinService.findAllWithQuery(gender, color, bornAfter, bornBefore);
     }
 
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
