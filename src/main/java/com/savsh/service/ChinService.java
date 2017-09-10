@@ -33,6 +33,9 @@ public class ChinService {
     }
 
     public Chin insertChin(Chin chin) {
+        chin.setDeceased(false);
+        chin.setSold(false);
+        chin.setInFamily(false);
         return chinRepository.save(chin);
     }
 
@@ -279,27 +282,56 @@ public class ChinService {
 
 //    get chins with queries
 
-    public Iterable<Chin> findAllWithQuery(String gender, String color, String after, String before) {
+    public Iterable<Chin> findAllWithQuery(String gender, String color, String after, String before, String inFamily) {
+        boolean infamily = inFamily.equals("true") ? true : false;
 
         LocalDate dateOfBeginning = after.isEmpty() ? LocalDate.of(1900, 1, 1) : LocalDate.parse(after);
         LocalDate dateOfEnding = before.isEmpty() ? LocalDate.now().plusMonths(1) : LocalDate.parse(before);
 
-        if (!gender.isEmpty() && !color.isEmpty()) {
-            return chinRepository.getChinsBySexAndColorAndBornAfterAndBornBefore(
+        if (!gender.isEmpty() && !color.isEmpty() && !inFamily.isEmpty()) {
+            return chinRepository.getChinsBySexAndColorAndInFamilyAndBornAfterAndBornBeforeAndDeceasedFalseAndSoldFalse(
+                    gender, color, infamily, dateOfBeginning, dateOfEnding);
+        }
+
+        if (!gender.isEmpty() && !color.isEmpty() && inFamily.isEmpty()) {
+            return chinRepository.getChinsBySexAndColorAndBornAfterAndBornBeforeAndDeceasedFalseAndSoldFalse(
                     gender, color, dateOfBeginning, dateOfEnding);
         }
 
-        if (!gender.isEmpty() && color.isEmpty()) {
-            return chinRepository.getChinsBySexAndBornAfterAndBornBefore(
+        if (!gender.isEmpty() && !inFamily.isEmpty() && color.isEmpty()) {
+            return chinRepository.getChinsBySexAndInFamilyAndBornAfterAndBornBeforeAndDeceasedFalseAndSoldFalse(
+                    gender, infamily, dateOfBeginning, dateOfEnding);
+        }
+
+        if (!color.isEmpty() && !inFamily.isEmpty() && gender.isEmpty()) {
+            return chinRepository.getChinsByColorAndInFamilyAndBornAfterAndBornBeforeAndDeceasedFalseAndSoldFalse(
+                    color, infamily, dateOfBeginning, dateOfEnding);
+        }
+
+        if (!gender.isEmpty() && color.isEmpty() && inFamily.isEmpty()) {
+            return chinRepository.getChinsBySexAndBornAfterAndBornBeforeAndDeceasedFalseAndSoldFalse(
                     gender, dateOfBeginning, dateOfEnding);
         }
 
-        if (gender.isEmpty() && !color.isEmpty()) {
-            return chinRepository.getChinsByColorAndBornAfterAndBornBefore(
+        if (!color.isEmpty() && gender.isEmpty() && inFamily.isEmpty()) {
+            return chinRepository.getChinsByColorAndBornAfterAndBornBeforeAndDeceasedFalseAndSoldFalse(
                     color, dateOfBeginning, dateOfEnding);
         }
 
-        return chinRepository.getChinsByBornAfterAndBornBefore(dateOfBeginning, dateOfEnding);
+        if (!inFamily.isEmpty() && gender.isEmpty() && color.isEmpty()) {
+            return chinRepository.getChinsByInFamilyAndBornAfterAndBornBeforeAndDeceasedFalseAndSoldFalse(
+                    infamily, dateOfBeginning, dateOfEnding);
+        }
+
+        return chinRepository.getChinsByBornAfterAndBornBeforeAndDeceasedFalseAndSoldFalse(
+                dateOfBeginning, dateOfEnding);
     }
 
+    public Iterable<Chin> getSoldChins() {
+        return chinRepository.getChinsBySoldTrue();
+    }
+
+    public Iterable<Chin> getDeceasedChins() {
+        return chinRepository.getChinsByDeceasedTrue();
+    }
 }

@@ -24,8 +24,19 @@ public class ChinController {
     public Iterable<Chin> getChinsByQuery(@RequestParam(value = "gender", required = false) String gender,
                                           @RequestParam(value = "color", required = false) String color,
                                           @RequestParam(value = "bornAfter", required = false) String bornAfter,
-                                          @RequestParam(value = "bornBefore", required = false) String bornBefore){
-        return chinService.findAllWithQuery(gender, color, bornAfter, bornBefore);
+                                          @RequestParam(value = "bornBefore", required = false) String bornBefore,
+                                          @RequestParam(value = "inFamily", required = false) String inFamily) {
+        return chinService.findAllWithQuery(gender, color, bornAfter, bornBefore, inFamily);
+    }
+
+    @RequestMapping(value = "/sold", method = RequestMethod.GET)
+    public Iterable<Chin> getSoldChins() {
+        return chinService.getSoldChins();
+    }
+
+    @RequestMapping(value = "/deceased", method = RequestMethod.GET)
+    public Iterable<Chin> getDeceasedChins() {
+        return chinService.getDeceasedChins();
     }
 
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)

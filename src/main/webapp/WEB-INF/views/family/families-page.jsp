@@ -1,4 +1,3 @@
-<h1>Families Page, Welcome to new level of family management</h1>
 <button class="btn btn-default" id="registerFamilyPageButtonId">Register Family</button>
 <table class="table" id="familyTableId">
     <thead>

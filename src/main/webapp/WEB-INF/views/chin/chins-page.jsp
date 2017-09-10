@@ -1,16 +1,19 @@
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1" %>
 
-<br/>
-<h4>All chins</h4>
-<button class="btn btn-default" id="registerChinId">Register</button>
-<br/>
+<ul class="nav nav-tabs" role="toolbar">
+    <li><button class="btn btn-default" id="registerChinId">Register Chin</button></li>
+    <li><button class="btn btn-default pull-right" id="allChinButtonId">All</button></li>
+    <li><button class="btn btn-default pull-right" id="soldChinButtonId">Sold</button></li>
+    <li><button class="btn btn-default pull-right" id="deceasedChinButtonId">Deceased</button></li>
+</ul>
 
 <ul class="nav nav-tabs" role="tablist">
     <li><input type="text" class="form-control" id="chin-sex-query-id" placeholder="Enter sex"/></li>
     <li><input type="text" class="form-control" id="chin-color-query-id" placeholder="Enter color"/></li>
     <li><input type="date" class="form-control" id="chin-from-query-id" placeholder="Enter date from"/></li>
     <li><input type="date" class="form-control" id="chin-to-query-id" placeholder="Enter date to"/></li>
+    <li><input type="text" class="form-control" id="chin-inFamily-query-id" placeholder="Enter true or false "/></li>
     <li><button class="btn btn-default" id="selectQueryButtonId">Select</button></li>
 </ul>
 <br/>

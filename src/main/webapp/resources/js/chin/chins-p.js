@@ -4,13 +4,17 @@ $(document).ready(function(){
     saveEditedChin();
     listenerToSelectQueryButton();
     listenerToRegisterButton();
+    listenerToSoldButton();
+    listenerToDeceasedButton();
+    listenerToAllChinButton();
 
 });
 
-let url = "http://localhost:8080/chins";
+let url = "http://localhost:8080/chins/query?gender=&color=&bornAfter=&bornBefore=&inFamily=";
 
 // to get all chins in table
 function getAllChins() {
+    $('#chinTableId tbody > tr').remove();
     $.ajax({
         url: url,
         type: 'GET',
@@ -60,15 +64,16 @@ function saveEditedChin() {
             name: $('#chin-name').val()
         };
 
+        console.log(dataSender);
+
         $.ajax({
             type: 'PUT',
             contentType: 'application/json',
-            url: url,
+            url: "http://localhost:8080/chins",
             dataType: "json",
             data: JSON.stringify(dataSender),
             success: function(data){
                 if (data.id !== undefined) {
-                    // window.location.replace("http://localhost:8080/chin?id=" + data.id);
                     $('#chinTableId tbody > tr').remove();
                     getAllChins();
                 } else {
@@ -124,21 +129,19 @@ function listenerToRegisterButton() {
 
 function listenerToSelectQueryButton() {
     $('#selectQueryButtonId').click(function() {
-        alert('hello');
         let gender = $('#chin-sex-query-id').val();
         let color = $('#chin-color-query-id').val();
         let from = $('#chin-from-query-id').val();
         let to = $('#chin-to-query-id').val();
+        let inFamily = $('#chin-inFamily-query-id').val();
 
-        let url = "http://localhost:8080/chins/query?gender=" + gender
-            + "&color=" + color + "&bornAfter=" + from + "&bornBefore=" + to;
-
-        alert(url);
+        let urlLocal = "http://localhost:8080/chins/query?gender=" + gender
+            + "&color=" + color + "&bornAfter=" + from + "&bornBefore=" + to + "&inFamily=" + inFamily;
+        url = urlLocal;
         $.ajax({
             url: url,
             type: 'GET',
             success: function(result) {
-                alert("success");
                 $('#chinTableId tbody > tr').remove();
                 let chinList = result;
                 $.each(chinList, function(i, chin) {
@@ -167,5 +170,26 @@ function listenerToSelectQueryButton() {
                 });
             }
         });
+    });
+}
+
+function listenerToSoldButton() {
+    $('#soldChinButtonId').click(function () {
+        url = "http://localhost:8080/chins/sold";
+        getAllChins();
+    });
+}
+
+function listenerToDeceasedButton() {
+    $('#deceasedChinButtonId').click(function () {
+        url = "http://localhost:8080/chins/deceased";
+        getAllChins();
+    });
+}
+
+function listenerToAllChinButton() {
+    $('#allChinButtonId').click(function () {
+        url = "http://localhost:8080/chins";
+        getAllChins();
     });
 }

@@ -8,15 +8,34 @@ import java.time.LocalDate;
 
 public interface ChinRepository extends CrudRepository<Chin, Long> {
 
-    Iterable<Chin> getChinsByBornAfterAndBornBefore(
-            LocalDate after, LocalDate before);
+    Iterable<Chin> getChinsBySexAndColorAndInFamilyAndBornAfterAndBornBeforeAndDeceasedFalseAndSoldFalse(
+            String sex, String color, Boolean inFamily, LocalDate after, LocalDate before);
 
-    Iterable<Chin> getChinsBySexAndBornAfterAndBornBefore(
-            String sex, LocalDate after, LocalDate before);
-
-    Iterable<Chin> getChinsBySexAndColorAndBornAfterAndBornBefore(
+    Iterable<Chin> getChinsBySexAndColorAndBornAfterAndBornBeforeAndDeceasedFalseAndSoldFalse(
             String sex, String color, LocalDate after, LocalDate before);
 
-    Iterable<Chin> getChinsByColorAndBornAfterAndBornBefore(
+    Iterable<Chin> getChinsBySexAndInFamilyAndBornAfterAndBornBeforeAndDeceasedFalseAndSoldFalse(
+            String sex, Boolean inFamily, LocalDate after, LocalDate before);
+
+    Iterable<Chin> getChinsByColorAndInFamilyAndBornAfterAndBornBeforeAndDeceasedFalseAndSoldFalse(
+            String color, Boolean inFamily, LocalDate after, LocalDate before);
+
+    Iterable<Chin> getChinsBySexAndBornAfterAndBornBeforeAndDeceasedFalseAndSoldFalse(
+            String sex, LocalDate after, LocalDate before);
+
+    Iterable<Chin> getChinsByColorAndBornAfterAndBornBeforeAndDeceasedFalseAndSoldFalse(
             String color, LocalDate after, LocalDate before);
+
+    Iterable<Chin> getChinsByInFamilyAndBornAfterAndBornBeforeAndDeceasedFalseAndSoldFalse(
+            Boolean inFamily, LocalDate after, LocalDate before);
+
+    Iterable<Chin> getChinsByBornAfterAndBornBeforeAndDeceasedFalseAndSoldFalse(
+            LocalDate after, LocalDate before);
+
+
+    Iterable<Chin> getChinsBySoldTrue();
+
+    Iterable<Chin> getChinsByDeceasedTrue();
+
+
 }
