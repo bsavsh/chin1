@@ -151,6 +151,7 @@ function listenerToSelectQueryButton() {
                         "<td>" + chin.fatherId + "</td>" +
                         "<td>" + chin.motherId + "</td>" +
                         "<td>" + chin.born + "</td>" +
+                        "<td>" + chin.inFamily + "</td>" +
                         "<td>" + chin.name + "</td>" +
                         "<td><button type='button' class='btn btn-default chin-edit'" +
                         " data-toggle='modal' data-target='#editChinModalBlanckId'>Edit</button></td>"

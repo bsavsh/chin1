@@ -56,4 +56,16 @@ public class MappingController {
         model.addAttribute("familyNumber", number);
         return "family-personal-page";
     }
+
+    @RequestMapping(value = "/financies-page", method = RequestMethod.GET)
+    public String getPageOfFinancies() {
+        return "financies-page";
+    }
+
+    @RequestMapping(value = "/register-finance-page", method = RequestMethod.GET)
+    public String getRegisterFinancePage() {
+        return "register-finance-page";
+    }
+
+
 }

@@ -1,8 +1,13 @@
 $(document).ready(function () {
-    console.log("hello");
     let familyNumber = $('#familyNumber').val();
-    console.log(familyNumber);
+    getAllChins(familyNumber);
+    saveEditedChin(familyNumber);
+});
+
+
+function getAllChins(familyNumber) {
     let url = "http://localhost:8080/families/whole-by-number/" + familyNumber;
+    console.log(url);
     $.ajax({
         url: url,
         type: 'GET',
@@ -35,11 +40,9 @@ $(document).ready(function () {
         }
     });
 
-    saveEditedChin();
-});
+}
 
-
-function saveEditedChin() {
+function saveEditedChin(familyNumber) {
     $('#modalSaveEditChinButtonId').click(function() {
         let dataSender = {
             id: $('#chin-id').text(),
@@ -57,14 +60,14 @@ function saveEditedChin() {
         $.ajax({
             type: 'PUT',
             contentType: 'application/json',
-            url: url,
+            url: 'http://localhost:8080/chins',
             dataType: "json",
             data: JSON.stringify(dataSender),
             success: function(data){
                 if (data.id !== undefined) {
                     // window.location.replace("http://localhost:8080/chin?id=" + data.id);
                     $('#chinTableId tbody > tr').remove();
-                    getAllChins();
+                    getAllChins(familyNumber);
                 } else {
                     let str = "";
                     for (let i = 0; i < data.length; i++) {

@@ -37,4 +37,15 @@
         <put-attribute name="body" value="/WEB-INF/views/family/family-personal-page.jsp" />
     </definition>
 
+    <definition name="financies-page" extends="base">
+        <put-attribute name="body" value="/WEB-INF/views/finance/financies-page.jsp" />
+    </definition>
+
+
+    <definition name="register-finance-page" extends="base">
+        <put-attribute name="body" value="/WEB-INF/views/finance/register-finance-page.jsp" />
+    </definition>
+
+
+
 </tiles-definitions>

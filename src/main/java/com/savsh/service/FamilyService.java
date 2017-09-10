@@ -26,6 +26,8 @@ public class FamilyService {
     }
 
     public void deleteFamilyById(long id) {
+        chinService.getChinById(getFamilyById(id).getHusbandId()).setInFamily(false);
+        chinService.getChinById(getFamilyById(id).getWifeId()).setInFamily(false);
         familyRepository.delete(id);
     }
 
@@ -34,6 +36,8 @@ public class FamilyService {
     }
 
     public Family insertFamily(Family family) {
+        chinService.getChinById(family.getHusbandId()).setInFamily(true);
+        chinService.getChinById(family.getWifeId()).setInFamily(true);
         return familyRepository.save(family);
     }
 
