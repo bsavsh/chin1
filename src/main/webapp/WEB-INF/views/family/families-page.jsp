@@ -38,7 +38,7 @@
                 <ul class="list-group">
                     <li class="list-group-item">
                         <div class="row">
-                            <spring:message code="family.id" /></div>
+                            <div class="col-md-6"><spring:message code="family.id" /></div>
                             <div class="col-md-6"><span id="family-id"></span></div>
                         </div>
                     </li>

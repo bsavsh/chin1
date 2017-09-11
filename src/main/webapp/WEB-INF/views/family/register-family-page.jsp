@@ -1,3 +1,6 @@
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1" %>
+
 <br/>
 <%-- to fill form of chinnchilla  --%>
 <div class="row">
@@ -6,39 +9,39 @@
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <h3>Register Family</h3> <br/>
+                <h3><spring:message code="family.register" /></h3> <br/>
             </div>
         </div>
 
         <form class="form-horizontal">
             <div class="form-group">
-                <label class="control-label col-md-4">Husband Id:</label>
+                <label class="control-label col-md-4"><spring:message code="family.husbandId" /></label>
                 <div class="col-md-8">
                     <input type="number" class="form-control" id="family-husbandId" placeholder="Enter husbandId"/>
                 </div>
             </div>
             <div class="form-group">
-                <label class="control-label col-md-4">Wife Id:</label>
+                <label class="control-label col-md-4"><spring:message code="family.wifeId" /></label>
                 <div class="col-md-8">
                     <input type="number" class="form-control" id="family-wifeId" placeholder="Enter wifeId"/>
                 </div>
             </div>
             <div class="form-group">
-                <label class="control-label col-md-4">Number of Family:</label>
+                <label class="control-label col-md-4"><spring:message code="family.numberOfFamily" /></label>
                 <div class="col-md-8">
                     <input type="number" class="form-control" id="family-numberOfFamily"
                            placeholder="Enter number of family"/>
                 </div>
             </div>
             <div class="form-group">
-                <label class="control-label col-md-4">Date of formation:</label>
+                <label class="control-label col-md-4"><spring:message code="family.dateOfFormation" /></label>
                 <div class="col-md-8">
                     <input type="date" class="form-control" id="family-dateOfFormation" placeholder="Enter date"/>
                 </div>
             </div>
 
             <div class="form-group">
-                <label class="control-label col-md-4">Description:</label>
+                <label class="control-label col-md-4"><spring:message code="family.description" /></label>
                 <div class="col-md-8">
                     <input type="text" class="form-control" id="family-description" placeholder="Enter description"/>
                 </div>
@@ -50,7 +53,9 @@
 
             <div class="form-group">
                 <div class="col-md-offset-2 col-md-10">
-                    <button type="button" class="btn btn-default pull-right" id="register-button-id">Register</button>
+                    <button type="button"
+                            class="btn btn-default pull-right"
+                            id="register-button-id"><spring:message code="family.register" /></button>
                 </div>
             </div>
         </form>
