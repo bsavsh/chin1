@@ -37,5 +37,13 @@ public interface ChinRepository extends CrudRepository<Chin, Long> {
 
     Iterable<Chin> getChinsByDeceasedTrue();
 
+//    statistics
+
+    Long countAllByDeceasedFalseAndSoldFalse();
+
+    Long countAllBySexAndDeceasedFalseAndSoldFalseAndInFamilyTrue(String sex);
+
+    Long countAllByDeceasedFalseAndSoldFalseAndInFamilyFalse();
+
 
 }

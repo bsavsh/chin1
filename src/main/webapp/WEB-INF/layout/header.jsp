@@ -5,8 +5,6 @@
     <li><a href="/chins-page">Chins</a></li>
     <li><a href="/families-page">Families</a></li>
     <li><a href="/financies-page">Finance</a></li>
-    <li><a href="#">Statistics</a></li>
-    <li><a href="#">Notification</a></li>
     <li class="pull-right"><a href="/?language=en_US">English</a></li>
     <li class="pull-right"><a href="/?language=fr">Ukrainian</a></li>
 </ul>

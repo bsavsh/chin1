@@ -334,4 +334,22 @@ public class ChinService {
     public Iterable<Chin> getDeceasedChins() {
         return chinRepository.getChinsByDeceasedTrue();
     }
+
+//    statistics
+
+    public Long getNumberOfAllChins() {
+        return chinRepository.countAllByDeceasedFalseAndSoldFalse();
+    }
+
+    public Long getNumberOfFemalesInFamily() {
+        return chinRepository.countAllBySexAndDeceasedFalseAndSoldFalseAndInFamilyTrue("female");
+    }
+
+    public Long getNumberOfMalesInFamily() {
+        return chinRepository.countAllBySexAndDeceasedFalseAndSoldFalseAndInFamilyTrue("male");
+    }
+
+    public Long getNumberOfAllNotInFamily() {
+        return chinRepository.countAllByDeceasedFalseAndSoldFalseAndInFamilyFalse();
+    }
 }
