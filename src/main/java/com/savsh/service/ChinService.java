@@ -55,7 +55,7 @@ public class ChinService {
             list.add(getChinById(motherId));
         }
 
-        list.removeIf(chin1 -> chin1 == null);
+        list.removeIf(c -> c == null);
         return list;
     }
 

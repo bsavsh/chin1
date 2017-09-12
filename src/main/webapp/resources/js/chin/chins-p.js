@@ -33,7 +33,7 @@ function getAllChins() {
                     "<td>" + chin.inFamily + "</td>" +
                     "<td>" + chin.name + "</td>" +
                     "<td><button type='button' class='btn btn-default chin-edit'" +
-                    " data-toggle='modal' data-target='#editChinModalBlanckId'>Edit</button></td>"
+                    " data-toggle='modal' data-target='#editChinModalBlanckId'>...</button></td>"
                 "</tr>";
 
                 $("#chinTableId tbody").append(newRowContent);

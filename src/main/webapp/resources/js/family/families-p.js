@@ -24,9 +24,9 @@ function getAllFamilies() {
                     "<td>" + family.dateOfFormation + "</td>" +
                     "<td>" + family.description + "</td>" +
                     "<td><button type='button' class='btn btn-default family-edit'" +
-                    " data-toggle='modal' data-target='#editFamilyModalBlanckId'>Edit</button></td>" +
+                    " data-toggle='modal' data-target='#editFamilyModalBlanckId'>...</button></td>" +
                     "<td><button type='button' class='btn btn-default family-delete'" +
-                    " data-toggle='modal' data-target='#deleteFamilyModalBlanckId'>Delete</button></td>"
+                    " data-toggle='modal' data-target='#deleteFamilyModalBlanckId'>...</button></td>"
                 "</tr>";
 
                 $("#familyTableId tbody").append(newRowContent);
