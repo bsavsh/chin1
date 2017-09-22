@@ -16,16 +16,16 @@ function getAllFinancies() {
         success: function (result) {
             let financies = result;
             $.each(financies, function (i, finance) {
-                let url = "http://localhost:8080/chin?id=" + finance.chinId;
+                let url = "http://localhost:8080/chin?id=" + finance.chinchilla;
                 let newRowContent =
                     "<tr>" +
                     "<td>" + finance.id + "</td>" +
-                    "<td><a href= " + url + ">" + finance.chinId + "</a></td>" +
-                    "<td>" + finance.dateOfChinGone + "</td>" +
+                    "<td><a href= " + url + ">" + finance.chinchilla + "</a></td>" +
+                    "<td>" + finance.dateOfSelling + "</td>" +
                     "<td>" + finance.dateOfMoneyBack + "</td>" +
                     "<td>" + finance.description + "</td>" +
                     "<td><button type='button' class='btn btn-default chin-edit'" +
-                    " data-toggle='modal' data-target='#editFinanceModalBlanckId'>Edit</button></td>"
+                    " data-toggle='modal' data-target='#editFinanceModalBlanckId'>...</button></td>"
                 "</tr>";
 
                 $("#financeTableId tbody").append(newRowContent);
@@ -49,8 +49,8 @@ function getFinanceById(id) {
         dataType: "json",
         success: function (data) {
             $('#finance-id').text(data.id);
-            $('#finance-chinId').val(data.chinId);
-            $('#finance-dateOfChinGone').val(data.dateOfChinGone);
+            $('#finance-chinId').val(data.chinchilla);
+            $('#finance-dateOfChinGone').val(data.dateOfSelling);
             $('#finance-dateOfMoneyBack').val(data.dateOfMoneyBack);
             $('#finance-description').val(data.description);
         }
@@ -66,13 +66,11 @@ function saveEditedFinance() {
 
         let dataSender = {
             id: $('#finance-id').text(),
-            chinId: $('#finance-chinId').val(),
-            dateOfChinGone: $('#finance-dateOfChinGone').val(),
+            chinchilla: {"id": $('#finance-chinId').val()},
+            dateOfSelling: $('#finance-dateOfChinGone').val(),
             dateOfMoneyBack: dateOfMoney,
             description: $('#finance-description').val(),
         };
-
-        console.log(dataSender);
 
         $.ajax({
             type: 'PUT',

@@ -10,7 +10,9 @@ $(document).ready(function(){
 
 });
 
-let url = "http://localhost:8080/chins/query?gender=&color=&bornAfter=&bornBefore=&inFamily=";
+// let url = "http://localhost:8080/chins/query?gender=&color=&bornAfter=&bornBefore=&inFamily=";
+
+let url = "http://localhost:8080/chins";
 
 // to get all chins in table
 function getAllChins() {
@@ -21,17 +23,21 @@ function getAllChins() {
         success: function(result) {
             let chinList = result;
             $.each(chinList, function(i, chin) {
-                let url = "http://localhost:8080/chin?id=" + chin.id;
+                // let fatherId = chin.father !== null ? chin.father.id : 0;
+                // let motherId = chin.mother !== null ? chin.mother.id : 0;
+                let urlR = "http://localhost:8080/chin?id=";
+                let url = urlR + chin.id;
+                let urlFather = urlR + chin.fatherId;
+                let urlMother = urlR + chin.motherId;
                 let newRowContent =
                     "<tr>" +
                     "<td> <a href= " + url + ">" + chin.id + "</a></td>" +
-                    "<td>" + chin.sex + "</td>" +
+                    "<td>" + chin.gender + "</td>" +
                     "<td>" + chin.color + "</td>" +
-                    "<td>" + chin.fatherId + "</td>" +
-                    "<td>" + chin.motherId + "</td>" +
+                    "<td><a href= " + urlFather + ">" + chin.fatherId + "</a></td>" +
+                    "<td><a href= " + urlMother + ">" + chin.motherId + "</a></td>" +
                     "<td>" + chin.born + "</td>" +
-                    "<td>" + chin.inFamily + "</td>" +
-                    "<td>" + chin.name + "</td>" +
+                    "<td>" + chin.description + "</td>" +
                     "<td><button type='button' class='btn btn-default chin-edit'" +
                     " data-toggle='modal' data-target='#editChinModalBlanckId'>...</button></td>"
                 "</tr>";
@@ -51,20 +57,18 @@ function getAllChins() {
 // action to save button in edit window
 function saveEditedChin() {
     $('#modalSaveEditChinButtonId').click(function() {
+        let fatherId = $('#chin-fatherId').val() == 0 ? null : {"id": + $('#chin-fatherId').val()};
+        let motherId = $('#chin-motherId').val() == 0 ? null : {"id": + $('#chin-motherId').val()};
         let dataSender = {
             id: $('#chin-id').text(),
-            sex: $('#chin-sex').val(),
+            gender: $('#chin-gender').val(),
             color: $('#chin-color').val(),
-            fatherId: $('#chin-fatherId').val(),
-            motherId: $('#chin-motherId').val(),
+            father: fatherId,
+            mother: motherId,
             born: $('#chin-born').val(),
             deceased: $('#chin-deceased').val(),
-            sold: $('#chin-sold').val(),
-            inFamily: $('#chin-inFamily').val(),
-            name: $('#chin-name').val()
+            description: $('#chin-description').val()
         };
-
-        console.log(dataSender);
 
         $.ajax({
             type: 'PUT',
@@ -108,15 +112,13 @@ function getChinById(id) {
         dataType: "json",
         success: function(data){
             $('#chin-id').text(data.id);
-            $('#chin-sex').val(data.sex);
+            $('#chin-gender').val(data.gender);
             $('#chin-color').val(data.color);
             $('#chin-fatherId').val(data.fatherId);
             $('#chin-motherId').val(data.motherId);
             $('#chin-born').val(data.born);
             $('#chin-deceased').val(data.deceased);
-            $('#chin-sold').val(data.sold);
-            $('#chin-inFamily').val(data.inFamily);
-            $('#chin-name').val(data.name);
+            $('#chin-description').val(data.description);
         }
     });
 }
@@ -138,38 +140,7 @@ function listenerToSelectQueryButton() {
         let urlLocal = "http://localhost:8080/chins/query?gender=" + gender
             + "&color=" + color + "&bornAfter=" + from + "&bornBefore=" + to + "&inFamily=" + inFamily;
         url = urlLocal;
-        $.ajax({
-            url: url,
-            type: 'GET',
-            success: function(result) {
-                $('#chinTableId tbody > tr').remove();
-                let chinList = result;
-                $.each(chinList, function(i, chin) {
-                    let url = "http://localhost:8080/chin?id=" + chin.id;
-                    let newRowContent =
-                        "<tr>" +
-                        "<td> <a href= " + url + ">" + chin.id + "</a></td>" +
-                        "<td>" + chin.sex + "</td>" +
-                        "<td>" + chin.color + "</td>" +
-                        "<td>" + chin.fatherId + "</td>" +
-                        "<td>" + chin.motherId + "</td>" +
-                        "<td>" + chin.born + "</td>" +
-                        "<td>" + chin.inFamily + "</td>" +
-                        "<td>" + chin.name + "</td>" +
-                        "<td><button type='button' class='btn btn-default chin-edit'" +
-                        " data-toggle='modal' data-target='#editChinModalBlanckId'>Edit</button></td>"
-                    "</tr>";
-
-                    $("#chinTableId tbody").append(newRowContent);
-                });
-
-                // to pass chin id into function that will fill edit-modal
-                $('.chin-edit').click(function() {
-                    let chinId = $(this).parents('tr').find('td').eq(0).text();
-                    getChinById(chinId);
-                });
-            }
-        });
+        getAllChins();
     });
 }
 

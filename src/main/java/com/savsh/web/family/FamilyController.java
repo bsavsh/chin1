@@ -1,6 +1,8 @@
-package com.savsh.web;
+package com.savsh.web.family;
 
-import com.savsh.entity.Chin;
+import com.savsh.dto.ChinDto;
+import com.savsh.dto.FamilyDto;
+import com.savsh.entity.Chinchilla;
 import com.savsh.entity.Family;
 import com.savsh.service.FamilyService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,17 +13,16 @@ import javax.validation.Valid;
 @RestController
 @RequestMapping(value = "/families")
 public class FamilyController {
-
     @Autowired
     private FamilyService familyService;
 
     @RequestMapping(method = RequestMethod.GET)
-    public Iterable<Family> allFamilies() {
+    public Iterable<FamilyDto> allFamilies() {
         return familyService.findAll();
     }
 
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
-    public Family getFamilyById(@PathVariable long id) {
+    public FamilyDto getFamilyById(@PathVariable long id) {
         return familyService.getFamilyById(id);
     }
 
@@ -41,7 +42,7 @@ public class FamilyController {
     }
 
     @RequestMapping(value = "/whole-by-number/{id}", method = RequestMethod.GET)
-    public Iterable<Chin> getWholeFamilyByNumberOfFamily(@PathVariable long id) {
+    public Iterable<ChinDto> getWholeFamilyByNumberOfFamily(@PathVariable long id) {
         return familyService.getFamilyByNumber(id);
     }
 }

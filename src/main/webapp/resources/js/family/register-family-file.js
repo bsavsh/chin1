@@ -5,9 +5,9 @@ $(document).ready(function() {
     $('#register-button-id').click(function() {
         let dataSender = {
             id: null,
-            husbandId: $('#family-husbandId').val(),
-            wifeId: $('#family-wifeId').val(),
-            numberOfFamily: $('#family-numberOfFamily').val(),
+            number: $('#family-numberOfFamily').val(),
+            husband: {"id": $('#family-husbandId').val()},
+            wife: {"id": $('#family-wifeId').val()},
             dateOfFormation: $('#family-dateOfFormation').val(),
             description: $('#family-description').val()
         };

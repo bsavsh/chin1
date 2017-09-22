@@ -7,14 +7,14 @@
 <table class="table" id="chinTableId">
     <thead>
     <tr>
-        <th><spring:message code="chin.id" /></th>
-        <th><spring:message code="chin.sex" /></th>
-        <th><spring:message code="chin.color" /></th>
-        <th><spring:message code="chin.fatherId" /></th>
-        <th><spring:message code="chin.motherId" /></th>
-        <th><spring:message code="chin.deceased" /></th>
-        <th><spring:message code="chin.inFamily" /></th>
-        <th><spring:message code="chin.sold" /></th>
+        <th><spring:message code="chinchilla.id" /></th>
+        <th><spring:message code="chinchilla.sex" /></th>
+        <th><spring:message code="chinchilla.color" /></th>
+        <th><spring:message code="chinchilla.fatherId" /></th>
+        <th><spring:message code="chinchilla.motherId" /></th>
+        <th><spring:message code="chinchilla.born" /></th>
+        <th><spring:message code="chinchilla.deceased" /></th>
+        <th><spring:message code="chinchilla.description" /></th>
         <th><spring:message code="edit" /></th>
     </tr>
     </thead>
@@ -32,78 +32,64 @@
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close modalCloseEditChinButton" data-dismiss="modal">&times;</button>
-                <h4 class="modal-title"><spring:message code="chin.Edit" /></h4>
+                <h4 class="modal-title"><spring:message code="chinchilla.Edit" /></h4>
             </div>
             <div class="modal-body">
-                <%-- personal chin info--%>
+                <%-- personal chinchilla info--%>
                 <ul class="list-group">
                     <li class="list-group-item">
                         <div class="row">
-                            <div class="col-md-6"><spring:message code="chin.id" /></div>
+                            <div class="col-md-6"><spring:message code="chinchilla.id" /></div>
                             <div class="col-md-6"><span id="chin-id"></span></div>
                         </div>
                     </li>
 
                     <li class="list-group-item">
                         <div class="row">
-                            <div class="col-md-6"><spring:message code="chin.sex" /></div>
-                            <div class="col-md-6"><input type="text" id="chin-sex"></input></div>
+                            <div class="col-md-6"><spring:message code="chinchilla.sex" /></div>
+                            <div class="col-md-6"><input type="text" id="chin-gender"></input></div>
                         </div>
                     </li>
 
                     <li class="list-group-item">
                         <div class="row">
-                            <div class="col-md-6"><spring:message code="chin.color" /></div>
+                            <div class="col-md-6"><spring:message code="chinchilla.color" /></div>
                             <div class="col-md-6"><input type="text" id="chin-color"></input></div>
                         </div>
                     </li>
 
                     <li class="list-group-item">
                         <div class="row">
-                            <div class="col-md-6"><spring:message code="chin.fatherId" /></div>
+                            <div class="col-md-6"><spring:message code="chinchilla.fatherId" /></div>
                             <div class="col-md-6"><input type="number" id="chin-fatherId"></input></div>
                         </div>
                     </li>
 
                     <li class="list-group-item">
                         <div class="row">
-                            <div class="col-md-6"><spring:message code="chin.motherId" /></div>
+                            <div class="col-md-6"><spring:message code="chinchilla.motherId" /></div>
                             <div class="col-md-6"><input type="number" id="chin-motherId"></input></div>
                         </div>
                     </li>
 
                     <li class="list-group-item">
                         <div class="row">
-                            <div class="col-md-6"><spring:message code="chin.born" /></div>
+                            <div class="col-md-6"><spring:message code="chinchilla.born" /></div>
                             <div class="col-md-6"><input type="date" id="chin-born"></input></div>
                         </div>
                     </li>
 
                     <li class="list-group-item">
                         <div class="row">
-                            <div class="col-md-6"><spring:message code="chin.deceased" /></div>
+                            <div class="col-md-6"><spring:message code="chinchilla.deceased" /></div>
                             <div class="col-md-6"><input type="text" id="chin-deceased"></input></div>
                         </div>
                     </li>
 
                     <li class="list-group-item">
                         <div class="row">
-                            <div class="col-md-6"><spring:message code="chin.sold" /></div>
-                            <div class="col-md-6"><input type="text" id="chin-sold"></input></div>
-                        </div>
-                    </li>
-
-                    <li class="list-group-item">
-                        <div class="row">
-                            <div class="col-md-6"><spring:message code="chin.inFamily" /></div>
-                            <div class="col-md-6"><input type="text" id="chin-inFamily"></input></div>
-                        </div>
-                    </li>
-
-                    <li class="list-group-item">
-                        <div class="row">
-                            <div class="col-md-6"><spring:message code="chin.name" /></div>
-                            <div class="col-md-6"><input type="text" id="chin-name"></input></div>
+                            <div class="col-md-6"><spring:message code="chinchilla.description" /></div>
+                            <div class="col-md-6"><input type="text" id="chinchilla-description"></input></div>
                         </div>
                     </li>
 
@@ -115,7 +101,7 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-default"
-                        data-dismiss="modal" id="modalSaveEditChinButtonId"><spring:message code="save" /></button>
+                        id="modalSaveEditChinButtonId"><spring:message code="save" /></button>
                 <button type="button" class="btn btn-default modalCloseEditChinButton"
                         data-dismiss="modal"><spring:message code="close" /></button>
             </div>

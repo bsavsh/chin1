@@ -25,6 +25,19 @@ import static java.time.format.DateTimeFormatter.ofPattern;
 @Configuration
 public class BeanConfig {
 
+    public static final DateTimeFormatter FORMATTER = ofPattern("yyyy-MM-dd");
+
+    @Bean
+    @Primary
+    public ObjectMapper serializingObjectMapper() {
+        ObjectMapper objectMapper = new ObjectMapper();
+        JavaTimeModule javaTimeModule = new JavaTimeModule();
+        javaTimeModule.addSerializer(LocalDate.class, new LocalDateSerializer());
+        javaTimeModule.addDeserializer(LocalDate.class, new LocalDateDeserializer());
+        objectMapper.registerModule(javaTimeModule);
+        return objectMapper;
+    }
+
     @Bean
     public TilesConfigurer tilesConfigurer() {
         TilesConfigurer tiles = new TilesConfigurer();
@@ -57,15 +70,4 @@ public class BeanConfig {
         return resolver;
     }
 
-    public static final DateTimeFormatter FORMATTER = ofPattern("yyyy-MM-dd");
-    @Bean
-    @Primary
-    public ObjectMapper serializingObjectMapper() {
-        ObjectMapper objectMapper = new ObjectMapper();
-        JavaTimeModule javaTimeModule = new JavaTimeModule();
-        javaTimeModule.addSerializer(LocalDate.class, new LocalDateSerializer());
-        javaTimeModule.addDeserializer(LocalDate.class, new LocalDateDeserializer());
-        objectMapper.registerModule(javaTimeModule);
-        return objectMapper;
-    }
 }

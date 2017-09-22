@@ -14,36 +14,39 @@
         </div>
 
         <form class="form-horizontal">
-            <div class="form-group">
-                <label class="control-label col-md-4"><spring:message code="family.husbandId" /></label>
-                <div class="col-md-8">
-                    <input type="number" class="form-control" id="family-husbandId" placeholder="Enter husbandId"/>
-                </div>
-            </div>
-            <div class="form-group">
-                <label class="control-label col-md-4"><spring:message code="family.wifeId" /></label>
-                <div class="col-md-8">
-                    <input type="number" class="form-control" id="family-wifeId" placeholder="Enter wifeId"/>
-                </div>
-            </div>
+
             <div class="form-group">
                 <label class="control-label col-md-4"><spring:message code="family.numberOfFamily" /></label>
                 <div class="col-md-8">
-                    <input type="number" class="form-control" id="family-numberOfFamily"
-                           placeholder="Enter number of family"/>
+                    <input type="number" class="form-control" id="family-numberOfFamily"/>
                 </div>
             </div>
+
+            <div class="form-group">
+                <label class="control-label col-md-4"><spring:message code="family.husbandId" /></label>
+                <div class="col-md-8">
+                    <input type="number" class="form-control" id="family-husbandId"/>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="control-label col-md-4"><spring:message code="family.wifeId" /></label>
+                <div class="col-md-8">
+                    <input type="number" class="form-control" id="family-wifeId" />
+                </div>
+            </div>
+
             <div class="form-group">
                 <label class="control-label col-md-4"><spring:message code="family.dateOfFormation" /></label>
                 <div class="col-md-8">
-                    <input type="date" class="form-control" id="family-dateOfFormation" placeholder="Enter date"/>
+                    <input type="date" class="form-control" id="family-dateOfFormation"/>
                 </div>
             </div>
 
             <div class="form-group">
                 <label class="control-label col-md-4"><spring:message code="family.description" /></label>
                 <div class="col-md-8">
-                    <input type="text" class="form-control" id="family-description" placeholder="Enter description"/>
+                    <input type="text" class="form-control" id="family-description"/>
                 </div>
             </div>
 

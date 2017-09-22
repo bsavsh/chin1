@@ -1,6 +1,4 @@
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1" %>
-
 
 <button class="btn btn-default" id="registerFinanceButtonId"><spring:message code="finance.register" /></button>
 <br/>
@@ -32,7 +30,7 @@
                 <h4 class="modal-title"><spring:message code="edit" /></h4>
             </div>
             <div class="modal-body">
-                <%-- personal chin info--%>
+                <%-- personal chinchilla info--%>
                 <ul class="list-group">
                     <li class="list-group-item">
                         <div class="row">

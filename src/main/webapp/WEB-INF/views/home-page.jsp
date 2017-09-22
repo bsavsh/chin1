@@ -9,28 +9,28 @@
                 <li class="list-group-item">
                     <div class="row">
                         <div class="col-md-6"><spring:message code="statistics.all" /></div>
-                        <div class="col-md-6"><span id="all-chin"></span></div>
+                        <div class="col-md-6"><span id="all-chinchilla"></span></div>
                     </div>
                 </li>
 
                 <li class="list-group-item">
                     <div class="row">
                         <div class="col-md-6"><spring:message code="statistics.females" /></div>
-                        <div class="col-md-6"><span id="females-chin"></span></div>
+                        <div class="col-md-6"><span id="females-chinchilla"></span></div>
                     </div>
                 </li>
 
                 <li class="list-group-item">
                     <div class="row">
                         <div class="col-md-6"><spring:message code="statistics.males" /></div>
-                        <div class="col-md-6"><span id="males-chin"></span></div>
+                        <div class="col-md-6"><span id="males-chinchilla"></span></div>
                     </div>
                 </li>
 
                 <li class="list-group-item">
                     <div class="row">
                         <div class="col-md-6"><spring:message code="statistics.not.inFamily" /></div>
-                        <div class="col-md-6"><span id="all-not-infamilies-chin"></span></div>
+                        <div class="col-md-6"><span id="all-not-infamilies-chinchilla"></span></div>
                     </div>
                 </li>
             </ul>

@@ -1,88 +1,73 @@
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1" %>
 <br/>
 <%-- to show detail info of chinchilla--%>
 <div row>
-    <div class="col-md-6">
+    <div class="col-md-4">
         <button id="index-data-id" class="btn btn-default"><spring:message code="index.data" /></button>
         <button id="blood-relation-id" class="btn btn-default"><spring:message code="blood.relations" /></button>
         <div id="index-data-info">
-            <h3><spring:message code="personal-chin-page" /></h3>
+            <h3><spring:message code="personal-chinchilla-page" /></h3>
             <ul class="list-group">
                 <li class="list-group-item">
                     <div class="row">
-                        <div class="col-md-6"><spring:message code="chin.id" /></div>
+                        <div class="col-md-6"><spring:message code="chinchilla.id" /></div>
                         <div class="col-md-6"><span id="chin-id"></span></div>
                     </div>
                 </li>
 
                 <li class="list-group-item">
                     <div class="row">
-                        <div class="col-md-6"><spring:message code="chin.sex" /></div>
-                        <div class="col-md-6"><span id="chin-sex"></span></div>
+                        <div class="col-md-6"><spring:message code="chinchilla.sex" /></div>
+                        <div class="col-md-6"><span id="chin-gender"></span></div>
                     </div>
                 </li>
 
                 <li class="list-group-item">
                     <div class="row">
-                        <div class="col-md-6"><spring:message code="chin.color" /></div>
+                        <div class="col-md-6"><spring:message code="chinchilla.color" /></div>
                         <div class="col-md-6"><span id="chin-color"></span></div>
                     </div>
                 </li>
 
                 <li class="list-group-item">
                     <div class="row">
-                        <div class="col-md-6"><spring:message code="chin.fatherId" /></div>
+                        <div class="col-md-6"><spring:message code="chinchilla.fatherId" /></div>
                         <div class="col-md-6"><span id="chin-fatherId"></span></div>
                     </div>
                 </li>
 
                 <li class="list-group-item">
                     <div class="row">
-                        <div class="col-md-6"><spring:message code="chin.motherId" /></div>
+                        <div class="col-md-6"><spring:message code="chinchilla.motherId" /></div>
                         <div class="col-md-6"><span id="chin-motherId"></span></div>
                     </div>
                 </li>
 
                 <li class="list-group-item">
                     <div class="row">
-                        <div class="col-md-6"><spring:message code="chin.born" /></div>
+                        <div class="col-md-6"><spring:message code="chinchilla.born" /></div>
                         <div class="col-md-6"><span id="chin-born"></span></div>
                     </div>
                 </li>
 
                 <li class="list-group-item">
                     <div class="row">
-                        <div class="col-md-6"><spring:message code="chin.deceased" /></div>
+                        <div class="col-md-6"><spring:message code="chinchilla.deceased" /></div>
                         <div class="col-md-6"><span id="chin-deceased"></span></div>
                     </div>
                 </li>
 
                 <li class="list-group-item">
                     <div class="row">
-                        <div class="col-md-6"><spring:message code="chin.sold" /></div>
-                        <div class="col-md-6"><span id="chin-sold"></span></div>
-                    </div>
-                </li>
-
-                <li class="list-group-item">
-                    <div class="row">
-                        <div class="col-md-6"><spring:message code="chin.inFamily" /></div>
-                        <div class="col-md-6"><span id="chin-inFamily"></span></div>
-                    </div>
-                </li>
-
-                <li class="list-group-item">
-                    <div class="row">
-                        <div class="col-md-6"><spring:message code="chin.name" /></div>
-                        <div class="col-md-6"><span id="chin-name"></span></div>
+                        <div class="col-md-6"><spring:message code="chinchilla.description" /></div>
+                        <div class="col-md-6"><span id="chin-description"></span></div>
                     </div>
                 </li>
             </ul>
         </div>
 
     </div>
-    <div class="col-md-6">
+    <div class="col-md-8">
         <div id="blood-relation-info">
             <button id="offspring-id" class="btn btn-default"><spring:message code="offspring" /></button>
             <button id="ancestors-id" class="btn btn-default"><spring:message code="ancestors" /></button>
@@ -117,13 +102,13 @@
             <table class="table" id="chinTableId">
                 <thead>
                 <tr>
-                    <th><spring:message code="chin.id" /></th>
-                    <th><spring:message code="chin.sex" /></th>
-                    <th><spring:message code="chin.color"/></th>
-                    <th><spring:message code="chin.fatherId" /></th>
-                    <th><spring:message code="chin.motherId" /></th>
-                    <th><spring:message code="chin.born" /></th>
-                    <th><spring:message code="chin.name" /></th>
+                    <th><spring:message code="chinchilla.id" /></th>
+                    <th><spring:message code="chinchilla.sex" /></th>
+                    <th><spring:message code="chinchilla.color"/></th>
+                    <th><spring:message code="chinchilla.fatherId" /></th>
+                    <th><spring:message code="chinchilla.motherId" /></th>
+                    <th><spring:message code="chinchilla.born" /></th>
+                    <th><spring:message code="chinchilla.description" /></th>
 
                 </tr>
                 </thead>
@@ -141,4 +126,4 @@
 <input type="hidden" id="chinId" value='${chinId}'/>
 
 
-<script src='${pageContext.request.contextPath}/resources/js/chin/personal-chin-p.js'></script>
+<script src='${pageContext.request.contextPath}/resources/js/chinchilla/personal-chin-p.js'></script>

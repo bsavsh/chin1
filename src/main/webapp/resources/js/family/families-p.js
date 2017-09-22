@@ -14,13 +14,13 @@ function getAllFamilies() {
         success: function(result) {
             let familiesList = result;
             $.each(familiesList, function(i, family) {
-                let url = "http://localhost:8080/family?number=" + family.numberOfFamily;
+                let url = "http://localhost:8080/family?number=" + family.number;
                 let newRowContent =
                     "<tr>" +
                     "<td>" + family.id + "</td>" +
-                    "<td> <a href= " + url + ">" + family.numberOfFamily + "</a></td>" +
-                    "<td>" + family.husbandId + "</td>" +
-                    "<td>" + family.wifeId + "</td>" +
+                    "<td> <a href= " + url + ">" + family.number + "</a></td>" +
+                    "<td>" + family.husband + "</td>" +
+                    "<td>" + family.wife + "</td>" +
                     "<td>" + family.dateOfFormation + "</td>" +
                     "<td>" + family.description + "</td>" +
                     "<td><button type='button' class='btn btn-default family-edit'" +
@@ -66,9 +66,9 @@ function saveEditedFamily() {
     $('#modalSaveEditFamilyButtonId').click(function() {
         let dataSender = {
             id: $('#family-id').text(),
-            husbandId: $('#family-husbandId').val(),
-            wifeId: $('#family-wifeId').val(),
-            numberOfFamily: $('#family-numberOfFamily').val(),
+            husband: {"id": + $('#family-husbandId').val()},
+            wife: {"id": + $('#family-wifeId').val()},
+            number: $('#family-numberOfFamily').val(),
             dateOfFormation: $('#family-dateOfFormation').val(),
             description: $('#family-description').val()
         };
@@ -81,9 +81,9 @@ function saveEditedFamily() {
             data: JSON.stringify(dataSender),
             success: function(data){
                 if (data.id !== undefined) {
-                    // window.location.replace("http://localhost:8080/chin?id=" + data.id);
-                    $('#familyTableId tbody > tr').remove();
-                    getAllFamilies();
+                    window.location.replace("http://localhost:8080/families-page");
+                    // $('#familyTableId tbody > tr').remove();
+                    // getAllFamilies();
                 } else {
                     let str = "";
                     for (let i = 0; i < data.length; i++) {
@@ -116,9 +116,9 @@ function getFamilyById(id) {
         dataType: "json",
         success: function(data){
             $('#family-id').text(data.id);
-            $('#family-husbandId').val(data.husbandId);
-            $('#family-wifeId').val(data.wifeId);
-            $('#family-numberOfFamily').val(data.numberOfFamily);
+            $('#family-husbandId').val(data.husband);
+            $('#family-wifeId').val(data.wife);
+            $('#family-numberOfFamily').val(data.number);
             $('#family-dateOfFormation').val(data.dateOfFormation);
             $('#family-description').val(data.description);
         }

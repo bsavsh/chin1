@@ -7,15 +7,13 @@ $(document).ready(function () {
         dataType: "json",
         success: function(data){
             $('#chin-id').append(data.id);
-            $('#chin-sex').append(data.sex);
+            $('#chin-gender').append(data.gender);
             $('#chin-color').append(data.color);
             $('#chin-fatherId').append(data.fatherId);
             $('#chin-motherId').append(data.motherId);
             $('#chin-born').append(data.born);
             $('#chin-deceased').append(data.deceased);
-            $('#chin-sold').append(data.sold);
-            $('#chin-inFamily').append(data.inFamily);
-            $('#chin-name').append(data.name);
+            $('#chin-description').append(data.description);
         }
     });
 
@@ -33,12 +31,12 @@ $(document).ready(function () {
                 let newRowContent =
                     "<tr>" +
                     "<td> <a href= " + url + ">" + chin.id + "</a></td>" +
-                    "<td>" + chin.sex + "</td>" +
+                    "<td>" + chin.gender + "</td>" +
                     "<td>" + chin.color + "</td>" +
                     "<td>" + chin.fatherId + "</td>" +
                     "<td>" + chin.motherId + "</td>" +
                     "<td>" + chin.born + "</td>" +
-                    "<td>" + chin.name + "</td>" +
+                    "<td>" + chin.description + "</td>" +
                     "</tr>";
 
                 $("#chinTableId tbody").append(newRowContent);
@@ -125,12 +123,12 @@ function getAncestorsByNamingThemAndId(name, id) {
                 let newRowContent =
                     "<tr>" +
                     "<td> <a href= " + url + ">" + chin.id + "</a></td>" +
-                    "<td>" + chin.sex + "</td>" +
+                    "<td>" + chin.gender + "</td>" +
                     "<td>" + chin.color + "</td>" +
                     "<td>" + chin.fatherId + "</td>" +
                     "<td>" + chin.motherId + "</td>" +
                     "<td>" + chin.born + "</td>" +
-                    "<td>" + chin.name + "</td>" +
+                    "<td>" + chin.description + "</td>" +
                 "</tr>";
 
                 $("#chinTableId tbody").append(newRowContent);

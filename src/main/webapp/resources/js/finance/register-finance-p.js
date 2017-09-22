@@ -5,8 +5,8 @@ $(document).ready(function() {
     $('#register-button-id').click(function() {
         let dataSender = {
             id: null,
-            chinId: $('#finance-chinId').val(),
-            dateOfChinGone: $('#finance-dateOfChinGone').val(),
+            chinchilla: {"id": $('#finance-chinId').val()},
+            dateOfSelling: $('#finance-dateOfChinGone').val(),
             description: $('#finance-description').val()
         };
 

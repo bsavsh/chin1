@@ -34,7 +34,7 @@
                 <h4 class="modal-title"><spring:message code="family.edit" /></h4>
             </div>
             <div class="modal-body">
-                <%-- personal chin info--%>
+                <%-- personal chinchilla info--%>
                 <ul class="list-group">
                     <li class="list-group-item">
                         <div class="row">
@@ -87,7 +87,7 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-default"
-                        data-dismiss="modal" id="modalSaveEditFamilyButtonId"><spring:message code="family.save" /></button>
+                        id="modalSaveEditFamilyButtonId"><spring:message code="family.save" /></button>
                 <button type="button" class="btn btn-default modalCloseEditFamilyButton"
                         data-dismiss="modal"><spring:message code="family.cancel" /></button>
             </div>

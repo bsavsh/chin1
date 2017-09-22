@@ -14,15 +14,15 @@
     </definition>
 
     <definition name="chins-page" extends="base">
-        <put-attribute name="body" value="/WEB-INF/views/chin/chins-page.jsp" />
+        <put-attribute name="body" value="/WEB-INF/views/chinchilla/chins-page.jsp" />
     </definition>
 
     <definition name="personal-chin-page" extends="base">
-        <put-attribute name="body" value="/WEB-INF/views/chin/personal-chin-page.jsp" />
+        <put-attribute name="body" value="/WEB-INF/views/chinchilla/personal-chin-page.jsp" />
     </definition>
 
     <definition name="register-page" extends="base">
-        <put-attribute name="body" value="/WEB-INF/views/chin/register-page.jsp" />
+        <put-attribute name="body" value="/WEB-INF/views/chinchilla/register-page.jsp" />
     </definition>
 
     <definition name="families-page" extends="base">

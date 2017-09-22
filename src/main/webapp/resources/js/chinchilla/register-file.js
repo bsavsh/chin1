@@ -3,14 +3,16 @@ $(document).ready(function() {
     let url = "http://localhost:8080/chins";
 
     $('#register-button-id').click(function() {
+        let father = $('#chin-fatherId').val() == 0 ? null : {"id": $('#chin-fatherId').val()};
+        let mother = $('#chin-motherId').val() == 0 ? null : {"id": $('#chin-motherId').val()};
         let dataSender = {
             id: null,
-            sex: $('#chin-sex').val(),
+            gender: $('#chin-gender').val(),
             color: $('#chin-color').val(),
-            fatherId: $('#chin-fatherId').val(),
-            motherId: $('#chin-motherId').val(),
+            father: father,
+            mother: mother,
             born: $('#chin-born').val(),
-            name: $('#chin-name').val()
+            description: $('#chin-description').val()
         };
 
         $.ajax({
@@ -30,7 +32,6 @@ $(document).ready(function() {
                     }
                     $("#errorMessagesId").show();
                 }
-
             },
             error: function(){
                 alert('register Chin error: ');
