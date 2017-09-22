@@ -10,9 +10,7 @@ $(document).ready(function(){
 
 });
 
-// let url = "http://localhost:8080/chins/query?gender=&color=&bornAfter=&bornBefore=&inFamily=";
-
-let url = "http://localhost:8080/chins";
+let url = "http://localhost:8080/chins/query?gender=&color=&bornAfter=&bornBefore=&inFamily=";
 
 // to get all chins in table
 function getAllChins() {
@@ -84,10 +82,10 @@ function saveEditedChin() {
                     let str = "";
                     for (let i = 0; i < data.length; i++) {
                         str += data[i].message + "</br>";
-                        $("#errorsId").html(str);
+                        // $("#errorsId").html(str);
                     }
-                    $("#errorMessagesId").show();
-
+                    alert(str);
+                    // $("#errorMessagesId").show();
                 }
 
             },

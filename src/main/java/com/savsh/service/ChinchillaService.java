@@ -41,7 +41,7 @@ public class ChinchillaService {
         return chinchillaRepository.save(chin);
     }
 
-    // ancestors
+//     ancestors
 
     public List<ChinDto> getAllAncestorsUpTo10Generations(long id) {
         List<Chinchilla> result = new ArrayList<>();
@@ -76,7 +76,7 @@ public class ChinchillaService {
         return result;
     }
 
-    // offspring
+//     offspring
 
     public List<ChinDto> getAllOffspring(long id) {
         List<Chinchilla> result = new ArrayList<>();
@@ -108,7 +108,7 @@ public class ChinchillaService {
         return result;
     }
 
-    // others
+//     others
 
     public List<ChinDto> getBrothersAndSistersOfChinById(long id) {
         Chinchilla chin = getChinById(id);
@@ -149,7 +149,7 @@ public class ChinchillaService {
         return result;
     }
 
-    // queries
+//    queries
 
     public List<ChinDto> findAllWithQuery(String gender, String color, String after, String before, String inFamily) {
         LocalDate a = after.isEmpty() ? LocalDate.parse("1900-01-01") : LocalDate.parse(after);
@@ -244,5 +244,36 @@ public class ChinchillaService {
         }
     }
 
+//    deceased
 
+    public List<ChinDto> getDeceasedChins() {
+        return toDtoList(chinchillaRepository.getChinchillasByDeceasedTrue());
+    }
+
+//    sold
+
+    public List<ChinDto> getSoldChinchillas() {
+        return toDtoList(chinchillaRepository.getSoldChinchillas());
+    }
+
+//    statistics
+    public int getNumberOfAllChins() {
+        List<ChinDto> chins = findAllWithQuery("", "", "", "","");
+        chins.removeAll(getSoldChinchillas());
+        return chins.size();
+    }
+
+    public int getNumberOfFemalesInFamily() {
+        return findAllWithQuery("FEMALE", "", "", "", "true").size();
+    }
+
+    public int getNumberOfMalesInFamily() {
+        return findAllWithQuery("MALE", "", "", "", "true").size();
+    }
+
+    public int getNumberOfAllNotInFamily() {
+        List<ChinDto> chins = findAllWithQuery("", "", "", "", "false");
+        chins.removeAll(getSoldChinchillas());
+        return chins.size();
+    }
 }

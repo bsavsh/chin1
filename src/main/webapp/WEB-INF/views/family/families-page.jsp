@@ -87,7 +87,7 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-default"
-                        id="modalSaveEditFamilyButtonId"><spring:message code="family.save" /></button>
+                        data-dismiss="modal" id="modalSaveEditFamilyButtonId"><spring:message code="family.save" /></button>
                 <button type="button" class="btn btn-default modalCloseEditFamilyButton"
                         data-dismiss="modal"><spring:message code="family.cancel" /></button>
             </div>

@@ -27,14 +27,17 @@ $(document).ready(function () {
         success: function(result) {
             let chinList = result;
             $.each(chinList, function(i, chin) {
-                let url = "http://localhost:8080/chin?id=" + chin.id;
+                let root = "http://localhost:8080/chin?id=";
+                let url = root + chin.id;
+                let fatherUrl = root + chin.fatherId;
+                let motherUrl = root + chin.motherId;
                 let newRowContent =
                     "<tr>" +
                     "<td> <a href= " + url + ">" + chin.id + "</a></td>" +
                     "<td>" + chin.gender + "</td>" +
                     "<td>" + chin.color + "</td>" +
-                    "<td>" + chin.fatherId + "</td>" +
-                    "<td>" + chin.motherId + "</td>" +
+                    "<td><a href= " + fatherUrl + ">" + chin.fatherId + "</a></td>" +
+                    "<td><a href= " + motherUrl + ">" + chin.motherId + "</a></td>" +
                     "<td>" + chin.born + "</td>" +
                     "<td>" + chin.description + "</td>" +
                     "</tr>";
@@ -119,14 +122,17 @@ function getAncestorsByNamingThemAndId(name, id) {
         success: function(result) {
             let chinList = result;
             $.each(chinList, function(i, chin) {
-                let url = "http://localhost:8080/chin?id=" + chin.id;
+                let root = "http://localhost:8080/chin?id=";
+                let url = root + chin.id;
+                let fatherUrl = root + chin.fatherId;
+                let motherUrl = root + chin.motherId;
                 let newRowContent =
                     "<tr>" +
                     "<td> <a href= " + url + ">" + chin.id + "</a></td>" +
                     "<td>" + chin.gender + "</td>" +
                     "<td>" + chin.color + "</td>" +
-                    "<td>" + chin.fatherId + "</td>" +
-                    "<td>" + chin.motherId + "</td>" +
+                    "<td><a href= " + fatherUrl + ">" + chin.fatherId + "</a></td>" +
+                    "<td><a href= " + motherUrl + ">" + chin.motherId + "</a></td>" +
                     "<td>" + chin.born + "</td>" +
                     "<td>" + chin.description + "</td>" +
                 "</tr>";

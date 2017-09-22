@@ -57,7 +57,6 @@ function getFinanceById(id) {
     });
 }
 
-
 // action to save button in edit window
 function saveEditedFinance() {
     $('#modalSaveEditFinanceButtonId').click(function () {
@@ -87,10 +86,10 @@ function saveEditedFinance() {
                     let str = "";
                     for (let i = 0; i < data.length; i++) {
                         str += data[i].message + "</br>";
-                        $("#errorsId").html(str);
+                        // $("#errorsId").html(str);
                     }
-                    $("#errorMessagesId").show();
-
+                    alert(str);
+                    // $("#errorMessagesId").show();
                 }
 
             },

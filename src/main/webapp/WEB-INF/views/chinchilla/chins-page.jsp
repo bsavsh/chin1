@@ -113,7 +113,7 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-default"
-                        id="modalSaveEditChinButtonId"><spring:message code="save" /></button>
+                        data-dismiss="modal" id="modalSaveEditChinButtonId"><spring:message code="save" /></button>
                 <button type="button" class="btn btn-default modalCloseEditChinButton"
                         data-dismiss="modal"><spring:message code="close" /></button>
             </div>

@@ -30,4 +30,17 @@ public interface ChinchillaRepository extends CrudRepository<Chinchilla, Long> {
 
     List<Chinchilla> getChinchillasByBornAfterAndBornBeforeAndGenderAndColorAndDeceasedFalse(
             LocalDate a, LocalDate b, Gender gender, String color);
+
+//    deceased
+
+    List<Chinchilla> getChinchillasByDeceasedTrue();
+
+//    sold
+
+    @Query("select c from Chinchilla  c where c.id in(select s.chinchilla from SellChin s)")
+    List<Chinchilla> getSoldChinchillas();
+
+//    statistics
+
+    Long countChinchillasByDeceasedFalse();
 }
