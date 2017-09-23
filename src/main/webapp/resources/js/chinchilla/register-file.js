@@ -1,8 +1,6 @@
-$(document).ready(function() {
-
+$(document).ready(function () {
     let url = "http://localhost:8080/chins";
-
-    $('#register-button-id').click(function() {
+    $('#register-button-id').click(function () {
         let father = $('#chin-fatherId').val() == 0 ? null : {"id": $('#chin-fatherId').val()};
         let mother = $('#chin-motherId').val() == 0 ? null : {"id": $('#chin-motherId').val()};
         let dataSender = {
@@ -14,14 +12,13 @@ $(document).ready(function() {
             born: $('#chin-born').val(),
             description: $('#chin-description').val()
         };
-
         $.ajax({
             type: 'POST',
             contentType: 'application/json',
             url: url,
             dataType: "json",
             data: JSON.stringify(dataSender),
-            success: function(data){
+            success: function (data) {
                 if (data.id !== undefined) {
                     window.location.replace("http://localhost:8080/chin?id=" + data.id);
                 } else {
@@ -33,11 +30,10 @@ $(document).ready(function() {
                     $("#errorMessagesId").show();
                 }
             },
-            error: function(){
+            error: function () {
                 alert('register Chin error: ');
 
             }
         });
     });
-
 });

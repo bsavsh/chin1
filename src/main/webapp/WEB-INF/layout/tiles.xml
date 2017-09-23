@@ -5,47 +5,45 @@
 <tiles-definitions>
 
     <definition name="base" template="/WEB-INF/layout/page.jsp">
-        <put-attribute name="header" value="/WEB-INF/layout/header.jsp" />
-        <put-attribute name="footer" value="/WEB-INF/layout/footer.jsp" />
+        <put-attribute name="header" value="/WEB-INF/layout/header.jsp"/>
+        <put-attribute name="footer" value="/WEB-INF/layout/footer.jsp"/>
     </definition>
 
     <definition name="home-page" extends="base">
-        <put-attribute name="body" value="/WEB-INF/views/home-page.jsp" />
+        <put-attribute name="body" value="/WEB-INF/views/home-page.jsp"/>
     </definition>
 
     <definition name="chins-page" extends="base">
-        <put-attribute name="body" value="/WEB-INF/views/chinchilla/chins-page.jsp" />
+        <put-attribute name="body" value="/WEB-INF/views/chinchilla/chins-page.jsp"/>
     </definition>
 
     <definition name="personal-chin-page" extends="base">
-        <put-attribute name="body" value="/WEB-INF/views/chinchilla/personal-chin-page.jsp" />
+        <put-attribute name="body" value="/WEB-INF/views/chinchilla/personal-chin-page.jsp"/>
     </definition>
 
     <definition name="register-page" extends="base">
-        <put-attribute name="body" value="/WEB-INF/views/chinchilla/register-page.jsp" />
+        <put-attribute name="body" value="/WEB-INF/views/chinchilla/register-page.jsp"/>
     </definition>
 
     <definition name="families-page" extends="base">
-        <put-attribute name="body" value="/WEB-INF/views/family/families-page.jsp" />
+        <put-attribute name="body" value="/WEB-INF/views/family/families-page.jsp"/>
     </definition>
 
     <definition name="register-family-page" extends="base">
-        <put-attribute name="body" value="/WEB-INF/views/family/register-family-page.jsp" />
+        <put-attribute name="body" value="/WEB-INF/views/family/register-family-page.jsp"/>
     </definition>
 
     <definition name="family-personal-page" extends="base">
-        <put-attribute name="body" value="/WEB-INF/views/family/family-personal-page.jsp" />
+        <put-attribute name="body" value="/WEB-INF/views/family/family-personal-page.jsp"/>
     </definition>
 
     <definition name="financies-page" extends="base">
-        <put-attribute name="body" value="/WEB-INF/views/finance/financies-page.jsp" />
+        <put-attribute name="body" value="/WEB-INF/views/finance/financies-page.jsp"/>
     </definition>
 
 
     <definition name="register-finance-page" extends="base">
-        <put-attribute name="body" value="/WEB-INF/views/finance/register-finance-page.jsp" />
+        <put-attribute name="body" value="/WEB-INF/views/finance/register-finance-page.jsp"/>
     </definition>
-
-
 
 </tiles-definitions>

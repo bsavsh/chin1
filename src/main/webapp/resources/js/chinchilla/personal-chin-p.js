@@ -5,7 +5,7 @@ $(document).ready(function () {
         type: 'GET',
         url: rootURL + '/' + id,
         dataType: "json",
-        success: function(data){
+        success: function (data) {
             $('#chin-id').append(data.id);
             $('#chin-gender').append(data.gender);
             $('#chin-color').append(data.color);
@@ -17,16 +17,15 @@ $(document).ready(function () {
         }
     });
 
-
     // at page loading make ajax for first offspring of chin
     $('#chinTableId tbody > tr').remove();
     let urlForParrents = "http://localhost:8080/" + "first-offspring" + "/" + id;
     $.ajax({
         url: urlForParrents,
         type: 'GET',
-        success: function(result) {
+        success: function (result) {
             let chinList = result;
-            $.each(chinList, function(i, chin) {
+            $.each(chinList, function (i, chin) {
                 let root = "http://localhost:8080/chin?id=";
                 let url = root + chin.id;
                 let fatherUrl = root + chin.fatherId;
@@ -65,34 +64,30 @@ $(document).ready(function () {
     listenerToAncestorsByNamingThem("#first-offspring-id", "first-offspring", id);
     listenerToAncestorsByNamingThem("#second-offspring-id", "second-offspring", id);
     listenerToAncestorsByNamingThem("#all-offspring-id", "all-offspring", id);
-
-
-
-
 });
 
 function listenerToIndexData() {
-    $('#index-data-id').click(function() {
+    $('#index-data-id').click(function () {
         $('#index-data-info').toggle();
     });
 }
 
 function listenerToBloodRelation() {
-    $('#blood-relation-id').click(function() {
+    $('#blood-relation-id').click(function () {
         $('#blood-relation-info').toggle();
     });
 }
 
 function listenerToAncestors() {
-    $('#ancestors-id').click(function() {
+    $('#ancestors-id').click(function () {
         $('#others-buttons-id').hide();
         $('#offspring-buttons-id').hide();
-       $('#ancestor-buttons-id').toggle();
+        $('#ancestor-buttons-id').toggle();
     });
 }
 
 function listenerToOthers() {
-    $('#others-id').click(function() {
+    $('#others-id').click(function () {
         $('#ancestor-buttons-id').hide();
         $('#offspring-buttons-id').hide();
         $('#others-buttons-id').toggle();
@@ -100,7 +95,7 @@ function listenerToOthers() {
 }
 
 function listenerToOffspring() {
-    $('#offspring-id').click(function() {
+    $('#offspring-id').click(function () {
         $('#ancestor-buttons-id').hide();
         $('#others-buttons-id').hide();
         $('#offspring-buttons-id').toggle();
@@ -119,9 +114,9 @@ function getAncestorsByNamingThemAndId(name, id) {
     $.ajax({
         url: urlForParrents,
         type: 'GET',
-        success: function(result) {
+        success: function (result) {
             let chinList = result;
-            $.each(chinList, function(i, chin) {
+            $.each(chinList, function (i, chin) {
                 let root = "http://localhost:8080/chin?id=";
                 let url = root + chin.id;
                 let fatherUrl = root + chin.fatherId;
@@ -135,8 +130,7 @@ function getAncestorsByNamingThemAndId(name, id) {
                     "<td><a href= " + motherUrl + ">" + chin.motherId + "</a></td>" +
                     "<td>" + chin.born + "</td>" +
                     "<td>" + chin.description + "</td>" +
-                "</tr>";
-
+                    "</tr>";
                 $("#chinTableId tbody").append(newRowContent);
             });
         }

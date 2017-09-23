@@ -6,29 +6,28 @@
 <div class="row">
     <div class="col-md-4">
 
-
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <h3><spring:message code="finance.register" /></h3> <br/>
+                <h3><spring:message code="finance.register"/></h3> <br/>
             </div>
         </div>
 
         <form class="form-horizontal">
             <div class="form-group">
-                <label class="control-label col-md-4"><spring:message code="finance.chinId" /></label>
+                <label class="control-label col-md-4"><spring:message code="finance.chinId"/></label>
                 <div class="col-md-8">
                     <input type="text" class="form-control" id="finance-chinId"/>
                 </div>
             </div>
             <div class="form-group">
-                <label class="control-label col-md-4"><spring:message code="finance.dateOfChinGone" /></label>
+                <label class="control-label col-md-4"><spring:message code="finance.dateOfChinGone"/></label>
                 <div class="col-md-8">
                     <input type="date" class="form-control" id="finance-dateOfChinGone">
                 </div>
             </div>
 
             <div class="form-group">
-                <label class="control-label col-md-4"><spring:message code="finance.description" /></label>
+                <label class="control-label col-md-4"><spring:message code="finance.description"/></label>
                 <div class="col-md-8">
                     <input type="text" class="form-control" id="finance-description"/>
                 </div>
@@ -41,7 +40,7 @@
             <div class="form-group">
                 <div class="col-md-offset-2 col-md-10">
                     <button type="button" class="btn btn-default pull-right"
-                            id="register-button-id"><spring:message code="register" /></button>
+                            id="register-button-id"><spring:message code="register"/></button>
                 </div>
             </div>
         </form>

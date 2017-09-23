@@ -2,14 +2,11 @@ package com.savsh.web.chin;
 
 import com.savsh.dto.ChinDto;
 import com.savsh.entity.Chinchilla;
-import com.savsh.entity.SellChin;
-import com.savsh.repository.ChinchillaRepository;
 import com.savsh.service.ChinchillaService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
-import java.util.List;
 
 @RestController
 @RequestMapping(value = "/chins")

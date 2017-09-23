@@ -1,8 +1,6 @@
-$(document).ready(function() {
-
+$(document).ready(function () {
     let url = "http://localhost:8080/families";
-
-    $('#register-button-id').click(function() {
+    $('#register-button-id').click(function () {
         let dataSender = {
             id: null,
             number: $('#family-numberOfFamily').val(),
@@ -11,15 +9,13 @@ $(document).ready(function() {
             dateOfFormation: $('#family-dateOfFormation').val(),
             description: $('#family-description').val()
         };
-
-
         $.ajax({
             type: 'POST',
             contentType: 'application/json',
             url: url,
             dataType: "json",
             data: JSON.stringify(dataSender),
-            success: function(data){
+            success: function (data) {
                 if (data.id !== undefined) {
                     window.location.replace("http://localhost:8080/families-page");
                 } else {
@@ -30,13 +26,11 @@ $(document).ready(function() {
                     }
                     $("#errorMessagesId").show();
                 }
-
             },
-            error: function(){
+            error: function () {
                 alert('register family error: ');
 
             }
         });
     });
-
 });

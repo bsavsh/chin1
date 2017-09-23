@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 public class MappingController {
-
     @Autowired
     private ChinchillaService service;
 
@@ -60,6 +59,4 @@ public class MappingController {
     public String getRegisterFinancePage() {
         return "register-finance-page";
     }
-
-
 }

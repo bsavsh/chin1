@@ -18,7 +18,6 @@ import java.util.Locale;
 
 @ControllerAdvice
 public class ValidationHandlerController {
-
     @Autowired
     private MessageSource messageSource;
 
@@ -27,14 +26,11 @@ public class ValidationHandlerController {
     public List<MessageDTO> processValidationError(MethodArgumentNotValidException ex) {
         BindingResult result = ex.getBindingResult();
         List<FieldError> error = result.getFieldErrors();
-
         return processFieldError(error);
     }
 
     private List<MessageDTO> processFieldError(List<FieldError> errors) {
         List<MessageDTO> messages = new ArrayList<>();
-
-
         if (errors != null) {
             Locale currentLocale = LocaleContextHolder.getLocale();
             errors.forEach(
@@ -43,8 +39,6 @@ public class ValidationHandlerController {
                         messages.add(new MessageDTO(MessageType.ERROR, msg));
                     });
         }
-
-
         return messages;
     }
 }

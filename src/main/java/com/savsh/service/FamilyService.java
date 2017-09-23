@@ -48,4 +48,14 @@ public class FamilyService {
         result.forEach(c -> dtos.add(new ChinDto(c)));
         return dtos;
     }
+
+    public List<FamilyDto> getFamiliesByNumber(long number) {
+        return toFamilyDtos(familyRepository.getAllByNumber(number));
+    }
+
+    private static List<FamilyDto> toFamilyDtos(List<Family> families) {
+        List<FamilyDto> dtos = new ArrayList<>();
+        families.forEach(f -> dtos.add(new FamilyDto(f)));
+        return dtos;
+    }
 }

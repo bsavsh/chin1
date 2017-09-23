@@ -4,7 +4,6 @@ import com.savsh.entity.Chinchilla;
 import com.savsh.entity.Gender;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
-import org.springframework.data.repository.query.Param;
 
 import java.time.LocalDate;
 import java.util.List;
@@ -39,8 +38,4 @@ public interface ChinchillaRepository extends CrudRepository<Chinchilla, Long> {
 
     @Query("select c from Chinchilla  c where c.id in(select s.chinchilla from SellChin s)")
     List<Chinchilla> getSoldChinchillas();
-
-//    statistics
-
-    Long countChinchillasByDeceasedFalse();
 }

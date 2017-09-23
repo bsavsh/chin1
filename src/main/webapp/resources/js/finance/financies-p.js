@@ -1,9 +1,7 @@
 $(document).ready(function () {
-
     getAllFinancies();
     saveEditedFinance();
     listenerToRegisterFinanceButton();
-
 });
 
 let url = "http://localhost:8080/financies";
@@ -27,10 +25,8 @@ function getAllFinancies() {
                     "<td><button type='button' class='btn btn-default chin-edit'" +
                     " data-toggle='modal' data-target='#editFinanceModalBlanckId'>...</button></td>"
                 "</tr>";
-
                 $("#financeTableId tbody").append(newRowContent);
             });
-
             // to pass chin id into function that will fill edit-modal
             $('.chin-edit').click(function () {
                 let financeId = $(this).parents('tr').find('td').eq(0).text();
@@ -60,9 +56,7 @@ function getFinanceById(id) {
 // action to save button in edit window
 function saveEditedFinance() {
     $('#modalSaveEditFinanceButtonId').click(function () {
-
         let dateOfMoney = $('#finance-dateOfMoneyBack').val() === "" ? null : $('#finance-dateOfMoneyBack').val();
-
         let dataSender = {
             id: $('#finance-id').text(),
             chinchilla: {"id": $('#finance-chinId').val()},
@@ -70,7 +64,6 @@ function saveEditedFinance() {
             dateOfMoneyBack: dateOfMoney,
             description: $('#finance-description').val(),
         };
-
         $.ajax({
             type: 'PUT',
             contentType: 'application/json',
@@ -91,15 +84,12 @@ function saveEditedFinance() {
                     alert(str);
                     // $("#errorMessagesId").show();
                 }
-
             },
             error: function () {
                 alert('updateChin error: ');
             }
         });
     });
-
-
     $(".modalCloseEditFinanceButton").click(function () {
         $("#errorMessagesId").hide();
     });

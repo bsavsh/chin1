@@ -6,6 +6,8 @@ import com.savsh.service.SellChinService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
+
 @RestController
 @RequestMapping(value = "/financies")
 public class SellChinController {
@@ -28,12 +30,12 @@ public class SellChinController {
     }
 
     @RequestMapping(method = RequestMethod.PUT)
-    public SellChin updateFinance(@RequestBody SellChin sellChin) {
+    public SellChin updateFinance(@Valid @RequestBody SellChin sellChin) {
         return sellChinService.updateOrder(sellChin);
     }
 
     @RequestMapping(method = RequestMethod.POST)
-    public SellChin insertFinance(@RequestBody SellChin order) {
+    public SellChin insertFinance(@Valid @RequestBody SellChin order) {
         return sellChinService.insertOrder(order);
     }
 }

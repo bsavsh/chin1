@@ -10,7 +10,6 @@ import org.springframework.stereotype.Service;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Collections;
 import java.util.List;
 
 @Service
@@ -50,15 +49,11 @@ public class ChinchillaService {
         result.addAll(getByAncestorsByN(id, 7));
         result.addAll(getByAncestorsByN(id, 8));
         result.addAll(getByAncestorsByN(id, 9));
-        List<ChinDto> dtos = new ArrayList<>();
-        result.forEach(chin -> dtos.add(new ChinDto(chin)));
-        return dtos;
+        return toDtoList(result);
     }
 
     public List<ChinDto> getAncestorsGeneration(long id, long n) {
-        List<ChinDto> dtos = new ArrayList<>();
-        getByAncestorsByN(id, n).forEach(chin -> dtos.add(new ChinDto(chin)));
-        return dtos;
+        return toDtoList(getByAncestorsByN(id, n));
     }
 
     public List<Chinchilla> getByAncestorsByN(long id, long n) {
@@ -87,15 +82,11 @@ public class ChinchillaService {
         result.addAll(getOffspring(id, 7));
         result.addAll(getOffspring(id, 8));
         result.addAll(getOffspring(id, 9));
-        List<ChinDto> dtos = new ArrayList<>();
-        result.forEach(chin -> dtos.add(new ChinDto(chin)));
-        return dtos;
+        return toDtoList(result);
     }
 
     public List<ChinDto> getOffspingGeneration(long id, long n) {
-        List<ChinDto> dtos = new ArrayList<>();
-        getOffspring(id, n).forEach(chin -> dtos.add(new ChinDto(chin)));
-        return dtos;
+        return toDtoList(getOffspring(id, n));
     }
 
     public List<Chinchilla> getOffspring(long id, long n) {

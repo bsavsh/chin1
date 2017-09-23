@@ -28,7 +28,6 @@ public class Family {
     private LocalDate dateOfFormation;
 
     @NotNull(message = "error.cannot.be.empty")
-    @Size(min = 1, max = 50, message = "error.cannot.be.empty")
     private String description;
 
     public Long getId() {

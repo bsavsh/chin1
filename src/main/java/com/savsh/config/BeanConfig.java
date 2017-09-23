@@ -24,7 +24,6 @@ import static java.time.format.DateTimeFormatter.ofPattern;
 
 @Configuration
 public class BeanConfig {
-
     public static final DateTimeFormatter FORMATTER = ofPattern("yyyy-MM-dd");
 
     @Bean
@@ -41,9 +40,7 @@ public class BeanConfig {
     @Bean
     public TilesConfigurer tilesConfigurer() {
         TilesConfigurer tiles = new TilesConfigurer();
-        tiles.setDefinitions(new String[] {
-                "/WEB-INF/layout/tiles.xml"
-        });
+        tiles.setDefinitions(new String[] {"/WEB-INF/layout/tiles.xml"});
         tiles.setCheckRefresh(true);
         return tiles;
     }
@@ -69,5 +66,4 @@ public class BeanConfig {
         resolver.setCookieMaxAge(4800);
         return resolver;
     }
-
 }

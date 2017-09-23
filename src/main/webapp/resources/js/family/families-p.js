@@ -1,5 +1,5 @@
-$(document).ready(function(){
-
+$(document).ready(function () {
+    listenerToSelectNumberButton();
     getAllFamilies();
     saveEditedFamily();
     listenerToRegisterFamilyButton();
@@ -11,9 +11,9 @@ function getAllFamilies() {
     $.ajax({
         url: url,
         type: 'GET',
-        success: function(result) {
+        success: function (result) {
             let familiesList = result;
-            $.each(familiesList, function(i, family) {
+            $.each(familiesList, function (i, family) {
                 let url = "http://localhost:8080/family?number=" + family.number;
                 let newRowContent =
                     "<tr>" +
@@ -32,24 +32,24 @@ function getAllFamilies() {
                 $("#familyTableId tbody").append(newRowContent);
             });
 
-            $('.family-edit').click(function() {
+            $('.family-edit').click(function () {
                 let familyId = $(this).parents('tr').find('td').eq(0).text();
                 getFamilyById(familyId);
             });
 
-            $('.family-delete').click(function() {
+            $('.family-delete').click(function () {
                 let id = $(this).parents('tr').find('td').eq(0).text();
-                $('#modalDeleteFamilyButtonId').click(function() {
+                $('#modalDeleteFamilyButtonId').click(function () {
                     let rootUrl = "http://localhost:8080/families";
                     $.ajax({
                         type: 'DELETE',
                         url: rootUrl + '/' + id,
                         dataType: "json",
-                        success: function() {
+                        success: function () {
                             $('#familyTableId tbody > tr').remove();
                             getAllFamilies();
                         },
-                        error: function(){
+                        error: function () {
                             $('#familyTableId tbody > tr').remove();
                             getAllFamilies();
                         }
@@ -60,30 +60,27 @@ function getAllFamilies() {
     });
 }
 
-
 // action to save button in edit window
 function saveEditedFamily() {
-    $('#modalSaveEditFamilyButtonId').click(function() {
+    $('#modalSaveEditFamilyButtonId').click(function () {
         let dataSender = {
             id: $('#family-id').text(),
-            husband: {"id": + $('#family-husbandId').val()},
-            wife: {"id": + $('#family-wifeId').val()},
+            husband: {"id": +$('#family-husbandId').val()},
+            wife: {"id": +$('#family-wifeId').val()},
             number: $('#family-numberOfFamily').val(),
             dateOfFormation: $('#family-dateOfFormation').val(),
             description: $('#family-description').val()
         };
-
         $.ajax({
             type: 'PUT',
             contentType: 'application/json',
             url: url,
             dataType: "json",
             data: JSON.stringify(dataSender),
-            success: function(data){
+            success: function (data) {
                 if (data.id !== undefined) {
-                    window.location.replace("http://localhost:8080/families-page");
-                    // $('#familyTableId tbody > tr').remove();
-                    // getAllFamilies();
+                    $('#familyTableId tbody > tr').remove();
+                    getAllFamilies();
                 } else {
                     let str = "";
                     for (let i = 0; i < data.length; i++) {
@@ -93,15 +90,12 @@ function saveEditedFamily() {
                     alert(str);
                     // $("#errorMessagesId").show();
                 }
-
             },
-            error: function(){
+            error: function () {
                 alert('updateFamily error: ');
             }
         });
     });
-
-
     $(".modalCloseEditFamilyButton").click(function () {
         $("#errorMessagesId").hide();
     })
@@ -114,7 +108,7 @@ function getFamilyById(id) {
         type: 'GET',
         url: rootURL + '/' + id,
         dataType: "json",
-        success: function(data){
+        success: function (data) {
             $('#family-id').text(data.id);
             $('#family-husbandId').val(data.husband);
             $('#family-wifeId').val(data.wife);
@@ -126,8 +120,18 @@ function getFamilyById(id) {
 }
 
 function listenerToRegisterFamilyButton() {
-    $('#registerFamilyPageButtonId').click(function() {
+    $('#registerFamilyPageButtonId').click(function () {
         window.location.replace("http://localhost:8080/register-family-page");
+    });
+}
+
+function listenerToSelectNumberButton() {
+    $('#selectFamilyNumber').click(function () {
+        let number = $('#family-number-id').val();
+        let rootURL = "http://localhost:8080/families/number/" + number;
+        url = rootURL;
+        $('#familyTableId tbody > tr').remove();
+        getAllFamilies();
     });
 }
 

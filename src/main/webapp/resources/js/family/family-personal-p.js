@@ -1,9 +1,9 @@
 $(document).ready(function () {
     let familyNumber = $('#familyNumber').val();
+    $('#familyNumberHeaderId').append(familyNumber);
     getAllChins(familyNumber);
     saveEditedChin(familyNumber);
 });
-
 
 function getAllChins(familyNumber) {
     let url = "http://localhost:8080/families/whole-by-number/" + familyNumber;
@@ -29,7 +29,6 @@ function getAllChins(familyNumber) {
                     "<td><button type='button' class='btn btn-default chin-edit'" +
                     " data-toggle='modal' data-target='#editChinModalBlanckId'>...</button></td>"
                 "</tr>";
-
                 $("#chinTableId tbody").append(newRowContent);
             });
 
@@ -40,7 +39,6 @@ function getAllChins(familyNumber) {
             });
         }
     });
-
 }
 
 function saveEditedChin(familyNumber) {
@@ -57,7 +55,6 @@ function saveEditedChin(familyNumber) {
             deceased: $('#chin-deceased').val(),
             description: $('#chin-description').val()
         };
-
         $.ajax({
             type: 'PUT',
             contentType: 'application/json',
@@ -66,9 +63,8 @@ function saveEditedChin(familyNumber) {
             data: JSON.stringify(dataSender),
             success: function(data){
                 if (data.id !== undefined) {
-                    window.location.replace("http://localhost:8080/family?number=" + familyNumber);
-                    // $('#chinTableId tbody > tr').remove();
-                    // getAllChins(familyNumber);
+                    $('#chinTableId tbody > tr').remove();
+                    getAllChins(familyNumber);
                 } else {
                     let str = "";
                     for (let i = 0; i < data.length; i++) {
@@ -78,15 +74,12 @@ function saveEditedChin(familyNumber) {
                     alert(str);
                     // $("#errorMessagesId").show();
                 }
-
             },
             error: function(){
                 alert('updateChin error: ');
             }
         });
     });
-
-
     $(".modalCloseEditChinButton").click(function () {
         $("#errorMessagesId").hide();
     })
@@ -100,13 +93,11 @@ function getChinById(id) {
         url: rootURL + '/' + id,
         dataType: "json",
         success: function(data){
-            let fatherId = data.father !== null ? data.father.id : 0;
-            let motherId = data.mother !== null ? data.mother.id : 0;
             $('#chin-id').text(data.id);
             $('#chin-gender').val(data.gender);
             $('#chin-color').val(data.color);
-            $('#chin-fatherId').val(fatherId);
-            $('#chin-motherId').val(motherId);
+            $('#chin-fatherId').val(data.fatherId);
+            $('#chin-motherId').val(data.motherId);
             $('#chin-born').val(data.born);
             $('#chin-deceased').val(data.deceased);
             $('#chin-description').val(data.description);

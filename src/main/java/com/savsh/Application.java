@@ -7,18 +7,13 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.domain.EntityScan;
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.web.support.SpringBootServletInitializer;
-import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Import;
 import org.springframework.data.jpa.convert.threeten.Jsr310JpaConverters;
 
-@EntityScan(
-        basePackageClasses = {Application.class, Jsr310JpaConverters.class}
-)
+@EntityScan(basePackageClasses = {Application.class, Jsr310JpaConverters.class})
 @SpringBootApplication
 @Import({BeanConfig.class, WebConfig.class})
 public class Application extends SpringBootServletInitializer {
-    // when this app will be war SpringBootServeltInitializer would be the same as main method for now.
-
     public static void main(String[] args) {
         SpringApplication.run(Application.class, args);
     }
@@ -27,6 +22,4 @@ public class Application extends SpringBootServletInitializer {
     protected SpringApplicationBuilder configure(SpringApplicationBuilder application) {
         return application.sources(Application.class);
     }
-
-
 }

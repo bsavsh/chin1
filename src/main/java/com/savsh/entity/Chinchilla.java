@@ -126,18 +126,4 @@ public class  Chinchilla {
         result = 31 * result + (description != null ? description.hashCode() : 0);
         return result;
     }
-
-    @Override
-    public String toString() {
-        return "Chinchilla{" +
-                "id=" + id +
-                ", gender=" + gender +
-                ", color='" + color + '\'' +
-                ", father=" + father +
-                ", mother=" + mother +
-                ", born=" + born +
-                ", deceased=" + deceased +
-                ", description='" + description + '\'' +
-                '}';
-    }
 }

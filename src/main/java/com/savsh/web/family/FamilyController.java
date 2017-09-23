@@ -2,13 +2,13 @@ package com.savsh.web.family;
 
 import com.savsh.dto.ChinDto;
 import com.savsh.dto.FamilyDto;
-import com.savsh.entity.Chinchilla;
 import com.savsh.entity.Family;
 import com.savsh.service.FamilyService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.util.List;
 
 @RestController
 @RequestMapping(value = "/families")
@@ -44,5 +44,10 @@ public class FamilyController {
     @RequestMapping(value = "/whole-by-number/{id}", method = RequestMethod.GET)
     public Iterable<ChinDto> getWholeFamilyByNumberOfFamily(@PathVariable long id) {
         return familyService.getFamilyByNumber(id);
+    }
+
+    @RequestMapping(value = "/number/{number}", method = RequestMethod.GET)
+    public List<FamilyDto> getFamiliesByNumber(@PathVariable("number") long number) {
+        return familyService.getFamiliesByNumber(number);
     }
 }
