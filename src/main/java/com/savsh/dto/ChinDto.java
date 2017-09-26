@@ -29,6 +29,7 @@ public class ChinDto {
         setBorn(chin.getBorn());
         setDeceased(chin.getDeceased());
         setDescription(chin.getDescription());
+
     }
 
     public Long getId() {

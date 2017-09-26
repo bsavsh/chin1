@@ -104,8 +104,13 @@ public class ChinchillaService {
     public List<ChinDto> getBrothersAndSistersOfChinById(long id) {
         Chinchilla chin = getChinById(id);
         List<ChinDto> result = new ArrayList<>();
+        if (chin == null) {
+            return result;
+        }
+        Long fatherId = chin.getFather() == null ? 0 : chin.getFather().getId();
+        Long motherId = chin.getMother() == null ? 0 : chin.getMother().getId();
         chinchillaRepository.getChinchillasByFather_IdAndMother_Id(
-                chin.getFather().getId(), chin.getMother().getId()).forEach(c -> result.add(new ChinDto(c)));
+                fatherId, motherId).forEach(c -> result.add(new ChinDto(c)));
         result.removeIf(c -> c.getId() == id);
         return result;
     }
@@ -113,19 +118,24 @@ public class ChinchillaService {
     public List<ChinDto> getHalfBrothersAndSistersOfChinById(long id) {
         Chinchilla chin = getChinById(id);
         List<ChinDto> result = new ArrayList<>();
+        if (chin == null) {
+            return result;
+        }
+        Long fatherId = chin.getFather() == null ? 0 : chin.getFather().getId();
+        Long motherId = chin.getMother() == null ? 0 : chin.getMother().getId();
         chinchillaRepository.getChinchillasByFather_idAndMother_idNot(
-                chin.getFather().getId(), chin.getMother().getId()).forEach(c -> result.add(new ChinDto(c)));
+                fatherId, motherId).forEach(c -> result.add(new ChinDto(c)));
 
         chinchillaRepository.getChinchillasByMother_idAndFather_idNot(
-                chin.getMother().getId(), chin.getFather().getId()).forEach(c -> result.add(new ChinDto(c)));
+                motherId, fatherId).forEach(c -> result.add(new ChinDto(c)));
         return result;
     }
 
     public List<ChinDto> getUnclesAndAunts(long id) {
         Chinchilla chin = getChinById(id);
         List<ChinDto> result = new ArrayList<>();
-        Long fatherId = chin.getFather().getId();
-        Long motherId = chin.getMother().getId();
+        Long fatherId = chin.getFather() == null ? 0 : chin.getFather().getId();
+        Long motherId = chin.getMother() == null ? 0 : chin.getMother().getId();
         result.addAll(getBrothersAndSistersOfChinById(fatherId));
         result.addAll(getBrothersAndSistersOfChinById(motherId));
         result.addAll(getHalfBrothersAndSistersOfChinById(fatherId));
@@ -221,7 +231,11 @@ public class ChinchillaService {
 
     private static List<ChinDto> toDtoList(List<Chinchilla> chins) {
         List<ChinDto> dtos = new ArrayList<>();
-        chins.forEach(c -> dtos.add(new ChinDto(c)));
+        chins.forEach(c -> {
+            if (c != null) {
+                dtos.add(new ChinDto(c));
+            }
+        });
         return dtos;
     }
 
