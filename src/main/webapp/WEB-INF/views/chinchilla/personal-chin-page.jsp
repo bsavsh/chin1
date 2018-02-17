@@ -5,6 +5,8 @@
     <div class="col-md-4">
         <button id="index-data-id" class="btn btn-default"><spring:message code="index.data"/></button>
         <button id="blood-relation-id" class="btn btn-default"><spring:message code="blood.relations"/></button>
+        <button type='button' class='btn btn-default' id="chin-edit-id" data-toggle='modal'
+                data-target='#editChinModalBlanckId'><spring:message code="edit"></spring:message></button>
         <div id="index-data-info">
             <h3><spring:message code="personal-chinchilla-page"/></h3>
             <ul class="list-group">
@@ -112,12 +114,99 @@
                     <th><spring:message code="chinchilla.motherId"/></th>
                     <th><spring:message code="chinchilla.born"/></th>
                     <th><spring:message code="chinchilla.description"/></th>
+                    <th><spring:message code="chinchilla.Edit"/></th>
                 </tr>
                 </thead>
                 <tbody>
                 </tbody>
             </table>
         </div>
+    </div>
+</div>
+
+<%-- Modal --%>
+<div class="modal fade" id="editChinModalBlanckId" role="dialog">
+    <div class="modal-dialog">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close modalCloseEditChinButton" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title"><spring:message code="chinchilla.Edit"/></h4>
+            </div>
+            <div class="modal-body">
+                <%-- personal chinchilla info--%>
+                <ul class="list-group">
+                    <li class="list-group-item">
+                        <div class="row">
+                            <div class="col-md-6"><spring:message code="chinchilla.id"/></div>
+                            <div class="col-md-6"><span id="chin-id-modal"></span></div>
+                        </div>
+                    </li>
+
+                    <li class="list-group-item">
+                        <div class="row">
+                            <div class="col-md-6"><spring:message code="chinchilla.sex"/></div>
+                            <div class="col-md-6"><input type="text" id="chin-gender-modal"></input></div>
+                        </div>
+                    </li>
+
+                    <li class="list-group-item">
+                        <div class="row">
+                            <div class="col-md-6"><spring:message code="chinchilla.color"/></div>
+                            <div class="col-md-6"><input type="text" id="chin-color-modal"></input></div>
+                        </div>
+                    </li>
+
+                    <li class="list-group-item">
+                        <div class="row">
+                            <div class="col-md-6"><spring:message code="chinchilla.fatherId"/></div>
+                            <div class="col-md-6"><input type="number" id="chin-fatherId-modal"></input></div>
+                        </div>
+                    </li>
+
+                    <li class="list-group-item">
+                        <div class="row">
+                            <div class="col-md-6"><spring:message code="chinchilla.motherId"/></div>
+                            <div class="col-md-6"><input type="number" id="chin-motherId-modal"></input></div>
+                        </div>
+                    </li>
+
+                    <li class="list-group-item">
+                        <div class="row">
+                            <div class="col-md-6"><spring:message code="chinchilla.born"/></div>
+                            <div class="col-md-6"><input type="date" id="chin-born-modal"></input></div>
+                        </div>
+                    </li>
+
+                    <li class="list-group-item">
+                        <div class="row">
+                            <div class="col-md-6"><spring:message code="chinchilla.deceased"/></div>
+                            <div class="col-md-6"><input type="text" id="chin-deceased-modal"></input></div>
+                        </div>
+                    </li>
+
+                    <li class="list-group-item">
+                        <div class="row">
+                            <div class="col-md-6"><spring:message code="chinchilla.description"/></div>
+                            <div class="col-md-6"><input type="text" id="chin-description-modal"></input></div>
+                        </div>
+                    </li>
+
+                    <li class="list-group-item" style="display: none;" id="errorMessagesId">
+                        <p id="errorsId"></p>
+                    </li>
+                </ul>
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default"
+                        data-dismiss="modal" id="modalSaveEditChinButtonId"><spring:message code="save"/></button>
+                <button type="button" class="btn btn-default modalCloseEditChinButton"
+                        data-dismiss="modal"><spring:message code="close"/></button>
+            </div>
+        </div>
+
     </div>
 </div>
 
