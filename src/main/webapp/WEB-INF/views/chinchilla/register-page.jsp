@@ -12,14 +12,22 @@
         </div>
 
         <form class="form-horizontal">
+
+
+            <div class="form-group">
+                <label class="control-label col-md-4"><spring:message code="chinchilla.amount"/></label>
+                <div class="col-md-8">
+                    <input type="number" value="1" class="form-control" id="chin-amount"/>
+                </div>
+            </div>
             <div class="form-group">
                 <label class="control-label col-md-4"><spring:message code="chinchilla.sex"/></label>
                 <div class="col-md-8">
                     <%--<input type="text" class="form-control" id="chin-gender"/>--%>
                     <select name="gender" id="chin-gender" class="form-control">
+                        <option value="UNKNOWN">UNKNOWN</option>
                         <option value="FEMALE">FEMALE</option>
                         <option value="MALE">MALE</option>
-                        <option value="UNKNOWN">UNKNOWN</option>
                     </select>
                 </div>
             </div>

@@ -1,17 +1,7 @@
 $(document).ready(function () {
     let url = "http://localhost:8080/chins";
-    $('#register-button-id').click(function () {
-        let father = $('#chin-fatherId').val() == 0 ? null : {"id": $('#chin-fatherId').val()};
-        let mother = $('#chin-motherId').val() == 0 ? null : {"id": $('#chin-motherId').val()};
-        let dataSender = {
-            id: null,
-            gender: $('#chin-gender').val(),
-            color: $('#chin-color').val(),
-            father: father,
-            mother: mother,
-            born: $('#chin-born').val(),
-            description: $('#chin-description').val()
-        };
+
+    function sendRequest(dataSender) {
         $.ajax({
             type: 'POST',
             contentType: 'application/json',
@@ -20,7 +10,7 @@ $(document).ready(function () {
             data: JSON.stringify(dataSender),
             success: function (data) {
                 if (data.id !== undefined) {
-                    window.location.replace("http://localhost:8080/chin?id=" + data.id);
+                    window.open("http://localhost:8080/chin?id=" + data.id);
                 } else {
                     let str = "";
                     for (let i = 0; i < data.length; i++) {
@@ -32,8 +22,25 @@ $(document).ready(function () {
             },
             error: function () {
                 alert('register Chin error: ');
-
             }
         });
+    }
+
+    $('#register-button-id').click(function () {
+        let father = $('#chin-fatherId').val() == 0 ? null : {"id": $('#chin-fatherId').val()};
+        let mother = $('#chin-motherId').val() == 0 ? null : {"id": $('#chin-motherId').val()};
+        let amount = $('#chin-amount').val();
+        let dataSender = {
+            id: null,
+            gender: $('#chin-gender').val(),
+            color: $('#chin-color').val(),
+            father: father,
+            mother: mother,
+            born: $('#chin-born').val(),
+            description: $('#chin-description').val()
+        };
+        for (let i = 0; i < amount; i++) {
+            sendRequest(dataSender);
+        }
     });
 });
