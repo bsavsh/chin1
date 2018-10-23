@@ -8,6 +8,8 @@
     <version>0.1.0</version>
     <packaging>war</packaging>
 
+    <!--  to create war file just run: mvn package -->
+
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
